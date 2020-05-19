@@ -22,7 +22,7 @@ def catalogue():
 @app.route('/add_movie', methods=['GET', 'POST'])
 @login_required
 def add_movie():
-    form = FilmForm()
+    form = FilmsForm()
     if form.validate_on_submit():
         filmData = Films(
                 title=form.title.data,
