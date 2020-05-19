@@ -16,7 +16,7 @@ def about():
 @app.route('/catalogue')
 def catalogue():
     filmData = Films.query.all()
-    return render_template('home.html', title='Home Page', collection=filmData)
+    return render_template('home.html', title='Home Page', films=filmData)
 
 
 @app.route('/add_movie', methods=['GET', 'POST'])
@@ -47,21 +47,21 @@ def add_movie():
 @app.route('/my_movies', methods=['GET', 'POST'])
 @login_required
 def my_movies():
-    filmData = Films.query.all()
+    myData = Films.query.all()
     form = CollectionForm()
     if form.validate_on_submit():
         ownerData = Collection(
                 own=form.own.data
         )
 
-        db.session.add()
+        db.session.add(ownerData)
         db.session.commit()
 
         return redirect(url_for('home'))
     else:
         print(form.errors)
 
-    return render_template('my_movies.html', title='Film', form=form)
+    return render_template('my_movies.html', title='Film', my_movies=myData, form=form)
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
@@ -129,10 +129,10 @@ def account():
 def account_delete():
     user = current_user.id
     account = Users.query.filter_by(id=user).first()
-    films = Collection.query.filter_by(user_id=user).all()
+    owned = Collection.query.filter_by(user_id=user).all()
     logout_user()
-    for films in collection:
-        db.session.delete(Collection)
+    for films in owned:
+        db.session.delete(films)
     db.session.delete(account)
     db.session.commit()
     return redirect(url_for('register'))

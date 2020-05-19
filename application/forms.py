@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms import intField, StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import Users
+from application.models import Users, Films
 from flask_login import current_user
 
-class FilmForm(FlaskForm):
+class FilmsForm(FlaskForm):
     
     title = StringField("Title",
         validators=[

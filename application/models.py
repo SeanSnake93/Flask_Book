@@ -8,14 +8,14 @@ def load_user(id):
 
 class Films(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False, unique=False)
-    year = db.Column(db.Integer(4), nullable=False, unique=False)
-    age = db.Column(db.Integer(5), nullable=False, unique=False)
-    director = db.Column(db.String(100), nullable=False, unique=True)
-    genre = db.Column(db.String(20), nullable=False, unique=True)
-    formating = db.Column(db.String(10), nullable=False, unique=True)
+    title = db.Column(db.String(100), nullable=False)
+    year = db.Column(db.Integer(4), nullable=False)
+    age = db.Column(db.Integer(5), nullable=False)
+    director = db.Column(db.String(100), nullable=False)
+    genre = db.Column(db.String(20), nullable=False)
+    formating = db.Column(db.String(10), nullable=False)
     description = db.Column(db.String(500), nullable=False, unique=True)
-    code = db.Column(db.Integer(15), nullable=False, unique=False)
+    code = db.Column(db.Integer(15), nullable=False, unique=True)
 
     def __repr__(self):
         return ''.join([
@@ -26,14 +26,14 @@ class Films(db.Model):
 class Collection(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    film_id = db.Column(db.Integer, db.ForeignKey('film.id'), nullable=False)
+    films_id = db.Column(db.Integer, db.ForeignKey('films.id'), nullable=False)
     own = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return ''.join([
             'user ID: ', str(self.user_id), '\r\n',
-            'Title: ', self.film_title, self.film_age, '\r\n',
-            self.film_description, '\r\n',
+            'Title: ', self.films_title, self.films_age, '\r\n',
+            self.films_description, '\r\n',
             'Own This Movie: ', self.own            
             ])
 
