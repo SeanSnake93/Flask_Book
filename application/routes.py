@@ -15,6 +15,7 @@ def about():
 
 @app.route('/catalogue')
 def catalogue():
+    form = CollectionForm()
     filmData = Films.query.all()
     ownerData = Collection(
                 own=form.own.data
