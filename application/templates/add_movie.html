@@ -78,11 +78,11 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.type.label }}
-                        {{ form.type }}
-                        {% if form.type.errors %}
+                        {{ form.formating.label }}
+                        {{ form.formating }}
+                        {% if form.formating.errors %}
                         <div class='error'>
-                                {% for error in form.type.errors %}
+                                {% for error in form.formating.errors %}
                                         <span>{{ error }}</span>
                                 {% endfor %}
                         </div>
