@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import intField, StringField, SubmitField, PasswordField, BooleanField
+from wtforms import IntegerField, StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users, Films
 from flask_login import current_user
@@ -13,7 +13,7 @@ class FilmsForm(FlaskForm):
             ]
     )
 
-    year = intField("Year",
+    year = IntegerField("Year",
         validators=[
             DataRequired(),
             Length(min=4, max=4)
@@ -55,7 +55,7 @@ class FilmsForm(FlaskForm):
             ]
     )
 
-    code = intField("Bar Code",
+    code = IntegerField("Bar Code",
         validators=[
             DataRequired(),
             Length(min=3, max=10)
