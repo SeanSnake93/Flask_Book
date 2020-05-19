@@ -51,6 +51,7 @@ def add_movie():
 @app.route('/collection', methods=['GET', 'POST'])
 @login_required
 def collection():
+    user = current_user.id
     form = CollectionForm()
     myData = Collection.query.filter_by(user_id=user).all()
     if form.validate_on_submit():
