@@ -2,7 +2,7 @@
   
 {% block body_content %}
 <div>
-    {% for film in Films %}
+    {% for film in films %}
     <div class="Film_List">
         <h2>{{ films.title }} ({{ films.year }})<span style="font-size: 10px;">{{ films.age }}</span></h2>
         <h3>{{ films.director }}, {{ films.genre }}, {{ films.type }}</h3>
