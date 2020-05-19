@@ -1,10 +1,18 @@
 {% extends "layout.html" %}
   
 {% block body_content %}
-<div class="Film_List">
-    <h2>{{ films.title }} ({{ films.year }})<span style="font-size: 10px;">{{ films.age }}</span></h2>
-    <h3>{{ films.director }}, {{ films.genre }}, {{ films.type }}</h3>
-    <p>{{ films.description }}</p>
-    <p style="color: #99ebff;">{{ films.code }}</p>
+<div>
+    <div class="Film_List">
+        <h2>{{ films.title }} ({{ films.year }})<span style="font-size: 10px;">{{ films.age }}</span></h2>
+        <h3>{{ films.director }}, {{ films.genre }}, {{ films.type }}</h3>
+        <p>{{ films.description }}</p>
+        <p style="color: #99ebff;">{{ films.code }}</p>
+    </div>
+    <div class="Film_List_Own">
+        <form method='POST' action="">
+                {{ form.own.label }}
+                {{ form.own }}{{ form.submit }}
+        </form>
+    </div>
 </div>
 {% endblock %}
