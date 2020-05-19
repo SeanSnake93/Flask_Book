@@ -13,11 +13,13 @@ def home():
 def about():
     return render_template('about.html', title='About Page')
 
-@app.route('/catalogue')
+@app.route('/catalogue', methods=['GET', 'POST'])
 def catalogue():
     filmData = Films.query.all()
-    form = CollectionForm()
+    ownData = Collection.query.all()
+    form = FilmsForm() + CollectionForm()
     if form.validate_on_submit():
+
         ownData = Collection(
                 own=form.own.data
         )
@@ -25,7 +27,7 @@ def catalogue():
         db.session.add(ownData)
         db.session.commit()
 
-    return render_template('catalogue.html', title='catalogue Page', films=filmData, form=form)
+    return render_template('catalogue.html', title='catalogue Page', films=filmData, own=ownData, form=form)
 
 
 @app.route('/add_movie', methods=['GET', 'POST'])

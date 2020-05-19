@@ -6,7 +6,7 @@ from datetime import datetime
 def load_user(id):
     return Users.query.get(int(id))
 
-class Films(db.Model):
+class Film(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     year = db.Column(db.Integer, nullable=False)
@@ -16,6 +16,7 @@ class Films(db.Model):
     formating = db.Column(db.String(10), nullable=False)
     description = db.Column(db.String(1000), nullable=False, unique=True)
     code = db.Column(db.Integer, nullable=False, unique=True)
+    owners = db.relationship('Collection', backref='owners', lazy=True)
 
     def __repr__(self):
         return ''.join([
@@ -43,7 +44,7 @@ class Users(db.Model, UserMixin):
     password = db.Column(db.String(500), nullable=False)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
-    Films = db.relationship('Collection', backref='owner', lazy=True) # relats table to Collection table
+    films = db.relationship('Collection', backref='owner', lazy=True) # relats table to Collection table
 
     def __repr__(self):
         return ''.join([

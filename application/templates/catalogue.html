@@ -2,6 +2,7 @@
   
 {% block body_content %}
 <div>
+    {% for film in Films%}
     <div class="Film_List">
         <h2>{{ films.title }} ({{ films.year }})<span style="font-size: 10px;">{{ films.age }}</span></h2>
         <h3>{{ films.director }}, {{ films.genre }}, {{ films.type }}</h3>
@@ -12,7 +13,8 @@
         <form method='POST' action="">
                 {{ form.hidden_tag() }}
                 {{ form.own.label }}
-                {{ form.own }}{{ form.submit }}
+                {{ form.own }}
+                {{ form.submit }}
         </form>
     </div>
 </div>
