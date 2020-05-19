@@ -29,18 +29,6 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.gender.label }}
-                        {{ form.gender }}
-                        {% if form.gender.errors %}
-                        <div class="error">
-                                {% for error in form.gender.errors %}
-                                        <span>{{ error }}</span>
-                                {% endfor %}
-                        </div>
-                        {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
                         {{ form.email.label }}
                         {{ form.email }}
                         {% if form.email.errors %}
