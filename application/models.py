@@ -10,7 +10,7 @@ class Films(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     year = db.Column(db.Integer, nullable=False)
-    age = db.Column(db.Integer, nullable=False)
+    age = db.Column(db.String(3), nullable=False)
     director = db.Column(db.String(100), nullable=False)
     genre = db.Column(db.String(20), nullable=False)
     formating = db.Column(db.String(10), nullable=False)

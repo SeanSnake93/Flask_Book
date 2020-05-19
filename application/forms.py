@@ -9,7 +9,7 @@ class FilmsForm(FlaskForm):
     title = StringField("Title",
         validators=[
             DataRequired(),
-            Length(min=3, max=30)
+            Length(min=3, max=50)
             ]
     )
 
