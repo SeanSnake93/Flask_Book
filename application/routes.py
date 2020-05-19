@@ -17,7 +17,7 @@ def about():
 def catalogue():
     filmData = Films.query.all()
     ownData = Collection.query.all()
-    form = FilmsForm() + CollectionForm()
+    form = FilmsForm() and CollectionForm()
     if form.validate_on_submit():
 
         ownData = Collection(
