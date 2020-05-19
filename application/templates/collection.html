@@ -14,6 +14,7 @@
                         </div>
                         <div class="Film_List_Own">
                                 <form method='POST' action="">
+                                        {{ form.hidden_tag() }}
                                         {{ form.own.label }}
                                         {{ form.own }}{{ form.submit }}
                                 </form>
