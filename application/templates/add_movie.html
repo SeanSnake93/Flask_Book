@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+<div class='form'>
+    <h3>Add a Movie</h3><br>
+        <form method='POST' action="">
+                {{ form.hidden_tag() }} <!--- This must be at the top of the form to enable hidden key --->
+                <div class="form-group">
+                    {{ form.title.label }}
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                    <div class="error">
+                            {% for error in form.title.errors %}
+                                    <span>{{ error }}</span>
+                            {% endfor %}
+                    </div>
+                    {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                        {{ form.year.label }}
+                        {{ form.year }}
+                        {% if form.year.errors %}
+                        <div class="error">
+                                {% for error in form.year.errors %}
+                                        <span>{{ error }}</span>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                        {{ form.genre.label }}
+                        {{ form.genre }}
+                        {% if form.genre.errors %}
+                        <div class="error">
+                                {% for error in form.genre.errors %}
+                                        <span>{{ error }}</span>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                        {{ form.director.label }}
+                        {{ form.director }}
+                        {% if form.director.errors %}
+                        <div class="error">
+                        {% for error in form.director.errors %}
+                                <span>{{ error }}</span>
+                        {% endfor %}
+                        </div>
+                        {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                        {{ form.age.label }}
+                        {{ form.age }}
+                        {% if form.age.errors %}
+                        <div class='error'>
+                                {% for error in form.age.errors %}
+                                        <span>{{ error }}</span>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                        {{ form.description.label }}
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                        <div class='error'>
+                                {% for error in form.description.errors %}
+                                        <span>{{ error }}</span>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                        {{ form.type.label }}
+                        {{ form.type }}
+                        {% if form.type.errors %}
+                        <div class='error'>
+                                {% for error in form.type.errors %}
+                                        <span>{{ error }}</span>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                        {{ form.code.label }}
+                        {{ form.code }}
+                        {% if form.code.errors %}
+                        <div class='error'>
+                                {% for error in form.code.errors %}
+                                        <span>{{ error }}</span>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                </div>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

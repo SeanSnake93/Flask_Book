@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+  
+{% block body_content %}
+
+<!--NEED TO ADD A FILTER TO THIS TO ONLY SHOW THINGS IN MY COLLECTION-->
+
+{% for film in collection %}
+	<div class="Film_List">
+        <h2>{{ film.title }} ({{ film.year }})<span style="font-size: 10px;">{{ film.age }}</span></h2>
+        <h3>{{ film.director }}, {{ film.genre }}, {{ film.type }}</h3>
+        <p>{{ film.description }}</p>
+        <p style="color: #99ebff;">{{ film.code }}</p>
+	</div>
+{% endfor %}
+
+{% endblock %}
+
+    
+
+    
+
+    
+
+    

@@ -1,0 +1,180 @@
+@charset "utf-8";
+/*@Sean-David-McCann©2019*/
+/*----------------------------------------------------------------------------------*/
+/*--- Basic_CSS ---*/
+
+html {
+	min-height: 100vh;
+	min-width: 100vh;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	z-index: 1;
+	background-color: #000406;
+	font-family: Georgia;
+}
+
+body {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+}
+
+h1 {
+	color: #ffffff;
+}
+
+h2 {
+}
+
+h3 {
+}
+
+p {
+}
+
+span {
+}
+
+/*--- Basic_CSS-END ---*/
+/*----------------------------------------------------------------------------------*/
+/*--- Menu_Settings ---*/
+
+#Main-Menu {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	height: 150px;
+	width: 100%;
+	min-width: 100vh;
+	z-index: 10;
+	background-color: #333;
+}
+
+#Main-Menu ul {
+	margin: auto;
+	margin-top: 50px;
+	border: 0;
+	padding: 0;
+	background-color: #000000;
+	height: 33.3%;
+	width: 100%;
+	max-width: 1000px;
+	position: center;
+}
+
+#Main-Menu li {
+	margin: 0;
+	height: 100%;
+	width: 25%;
+	border: 0;
+	padding: auto;
+	text-decoration: none;
+	display: block;
+	float: left;
+	opacity: 0.5;
+	transition: 0.5s;
+	background-color: #000406;
+}
+
+#Main-Menu li a {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	width: 100%;
+	height: inherit;
+	color: #ffffff;
+	display: block;
+	line-height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	transition: 0.5s;
+}
+
+#Main-Menu li:hover {
+	opacity: 1;
+	transition: 1s;
+}
+
+#Main-Menu li a:hover {
+	color: #111111;
+	background-color: #999999;
+	transition: 1s;
+}
+
+.Menu-Home {
+	display: block;
+	bottom: -50px;
+	position: absolute;
+}
+
+.Main-Menu {
+	top: -50px;
+	position: fixed;
+	display: block;
+}
+
+/*--- Menu_Settings-END ---*/
+/*----------------------------------------------------------------------------------*/
+/*--- Wrapper ---*/
+
+.Wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.Wrapper {
+	margin-top: 150px;
+	width: 100%;
+	height: 100%;
+}
+
+/*--- Wrapper-END ---*/
+/*----------------------------------------------------------------------------------*/
+/*--- id's_and_class's_A-Z-END ---*/
+.Film_List {
+	width: 80%;
+	height: auto;
+	min-height: 150px;
+	background-color: #1b3152;
+	padding: 5px;
+	margin: 0;
+	border: 0;
+}
+
+.Film_List h2{
+	color: #b3d1ff;
+}
+
+.Film_List h2 span{
+	color: #ffffff;
+}
+
+.Film_List h3{
+	color: #555555;
+}
+
+.Film_List p{
+	color: #ffffff;
+}
+
+.Home_Splash {
+	width: 100%;
+	background-color: #000000;
+	height: auto;
+	min-height: 300px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.Home_Splash h1 {
+	color: #777777;
+}
+
+.Home_Splash h3 {
+	color: #ffffff;
+}
+/*--- id's_and_class's_A-Z-END ---*/
