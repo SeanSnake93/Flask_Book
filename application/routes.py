@@ -14,14 +14,14 @@ def about():
     return render_template('about.html', title='About Page')
 
 @app.route('/catalogue')
-def home():
+def catalogue():
     filmData = Films.query.all()
-    return render_template('home.html', title='Home Page', posts=filmData)
+    return render_template('home.html', title='Home Page', collection=filmData)
 
 
 @app.route('/add_movie', methods=['GET', 'POST'])
 @login_required
-def film():
+def add_movie():
     form = FilmForm()
     if form.validate_on_submit():
         filmData = Films(
@@ -46,7 +46,7 @@ def film():
 
 @app.route('/collection', methods=['GET', 'POST'])
 @login_required
-def film():
+def collection():
     filmData = Films.query.all()
     form = CollectionForm()
     if form.validate_on_submit():
@@ -62,11 +62,6 @@ def film():
         print(form.errors)
 
     return render_template('film.html', title='Film', form=form)
-
-@app.route('/catalogue')
-def home():
-    filmData = Films.query.all()
-    return render_template('home.html', title='Home Page', posts=filmData)`
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
