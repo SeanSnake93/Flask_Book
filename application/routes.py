@@ -20,7 +20,7 @@ def catalogue():
     form = FilmsForm() and CollectionForm()
     if form.validate_on_submit():
         ownData = Collection(
-                owners=filmData.id,
+                owners=Films.id,
                 owner=current_user,
                 own=form.own.data
         )
