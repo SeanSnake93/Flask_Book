@@ -44,9 +44,9 @@ def add_movie():
 
     return render_template('add_movie.html', title='add_movie', form=form)
 
-@app.route('/my_movies', methods=['GET', 'POST'])
+@app.route('/collection', methods=['GET', 'POST'])
 @login_required
-def my_movies():
+def collection():
     myData = Films.query.all()
     form = CollectionForm()
     if form.validate_on_submit():
@@ -61,7 +61,7 @@ def my_movies():
     else:
         print(form.errors)
 
-    return render_template('my_movies.html', title='my_movies', my_movies=myData, form=form)
+    return render_template('collection.html', title='collection', collection=myData, form=form)
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------

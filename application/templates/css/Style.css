@@ -161,6 +161,16 @@ span {
 	color: #ffffff;
 }
 
+.Film_List_Own{
+	width: 10%;
+	height: auto;
+	min-height: 150px;
+	background-color: #2f4f80;
+	padding: 5px;
+	margin: 0;
+	border: 0;
+}
+
 .Home_Splash {
 	width: 100%;
 	background-color: #000000;
