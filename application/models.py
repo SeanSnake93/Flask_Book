@@ -43,7 +43,7 @@ class Users(db.Model, UserMixin):
     password = db.Column(db.String(500), nullable=False)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
-    posts = db.relationship('Posts', backref='auther', lazy=True) # relats table to Posts table
+    Films = db.relationship('Collection', backref='owner', lazy=True) # relats table to Collection table
 
     def __repr__(self):
         return ''.join([
