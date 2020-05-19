@@ -9,14 +9,6 @@
         <p>{{ films.description }}</p>
         <p style="color: #99ebff;">{{ films.code }}</p>
     </div>
-    <div class="Film_List_Own">
-        <form method='POST' action="">
-                {{ form.hidden_tag() }}
-                {{ form.own.label }}
-                {{ form.own }}
-                {{ form.submit }}
-        </form>
-    </div>
     {% endfor %}
 </div>
 {% endblock %}
