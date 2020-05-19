@@ -44,9 +44,9 @@ def add_movie():
 
     return render_template('film.html', title='Film', form=form)
 
-@app.route('/collection', methods=['GET', 'POST'])
+@app.route('/my_movies', methods=['GET', 'POST'])
 @login_required
-def collection():
+def my_movies():
     filmData = Films.query.all()
     form = CollectionForm()
     if form.validate_on_submit():
@@ -61,7 +61,7 @@ def collection():
     else:
         print(form.errors)
 
-    return render_template('film.html', title='Film', form=form)
+    return render_template('my_movies.html', title='Film', form=form)
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
@@ -129,9 +129,9 @@ def account():
 def account_delete():
     user = current_user.id
     account = Users.query.filter_by(id=user).first()
-    posts = Collection.query.filter_by(user_id=user).all()
+    films = Collection.query.filter_by(user_id=user).all()
     logout_user()
-    for film in collection:
+    for films in collection:
         db.session.delete(Collection)
     db.session.delete(account)
     db.session.commit()
