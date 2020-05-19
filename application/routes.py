@@ -16,7 +16,7 @@ def about():
 @app.route('/catalogue')
 def catalogue():
     filmData = Films.query.all()
-    return render_template('catalogue.html', title='catalogue Page', films=filmData)
+    return render_template('catalogue.html', title='catalogue Page', films=filmData, form=form)
 
 
 @app.route('/add_movie', methods=['GET', 'POST'])
