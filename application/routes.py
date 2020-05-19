@@ -16,7 +16,7 @@ def about():
 @app.route('/catalogue')
 def catalogue():
     filmData = Films.query.all()
-    return render_template('home.html', title='Home Page', films=filmData)
+    return render_template('catalogue.html', title='catalogue Page', films=filmData)
 
 
 @app.route('/add_movie', methods=['GET', 'POST'])
@@ -42,7 +42,7 @@ def add_movie():
     else:
         print(form.errors)
 
-    return render_template('film.html', title='Film', form=form)
+    return render_template('add_movie.html', title='add_movie', form=form)
 
 @app.route('/my_movies', methods=['GET', 'POST'])
 @login_required
@@ -61,7 +61,7 @@ def my_movies():
     else:
         print(form.errors)
 
-    return render_template('my_movies.html', title='Film', my_movies=myData, form=form)
+    return render_template('my_movies.html', title='my_movies', my_movies=myData, form=form)
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
