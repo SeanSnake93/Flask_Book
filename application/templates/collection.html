@@ -6,9 +6,9 @@
                 <div class="form">
                         {{ form.hidden_tag() }}
                         </div><div class="Film_List">
-                                <h2>{{ films.title }} ({{ films.year }})<span style="font-size: 10px;">{{ film.age }}</span></h2>
-                                <h3>{{ films.director }}, {{ film.genre }}, {{ film.type }}</h3>
-                                <p>{{ films.description }}</p>
+                                <h2>{{ film.title }} ({{ film.year }})<span style="font-size: 10px;">{{ film.age }}</span></h2>
+                                <h3>{{ film.director }}, {{ film.genre }}, {{ film.type }}</h3>
+                                <p>{{ film.description }}</p>
                                 <p style="color: #99ebff;">{{ film.code }}</p>
                         </div>
                 {% endfor %}
