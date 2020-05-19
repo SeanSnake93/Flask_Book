@@ -15,8 +15,8 @@ def about():
 
 @app.route('/catalogue')
 def catalogue():
-    form = CollectionForm()
     filmData = Films.query.all()
+    form = CollectionForm()
     if form.validate_on_submit():
         ownData = Collection(
                 own=form.own.data
