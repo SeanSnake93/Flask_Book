@@ -16,6 +16,9 @@ def about():
 @app.route('/catalogue')
 def catalogue():
     filmData = Films.query.all()
+    ownerData = Collection(
+                own=form.own.data
+        )
     return render_template('catalogue.html', title='catalogue Page', films=filmData, form=form)
 
 
@@ -47,7 +50,7 @@ def add_movie():
 @app.route('/collection', methods=['GET', 'POST'])
 @login_required
 def collection():
-    myData = Films.query.all()
+    myData = Films.query.filter_by(user_id=user).all()
     form = CollectionForm()
     if form.validate_on_submit():
         ownerData = Collection(
