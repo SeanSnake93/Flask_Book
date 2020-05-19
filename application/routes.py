@@ -19,11 +19,11 @@ def catalogue():
     ownData = Collection.query.all()
     form = FilmsForm() and CollectionForm()
     if form.validate_on_submit():
-
         ownData = Collection(
+                owners=filmData.id
+                owner=current_user
                 own=form.own.data
         )
-
         db.session.add(ownData)
         db.session.commit()
 
