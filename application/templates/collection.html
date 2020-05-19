@@ -13,8 +13,10 @@
                         <p style="color: #99ebff;">{{ film.code }}</p>
                 </div>
                 <div class="Film_List_Own">
-                        {{ form.own.label }}
-                        {{ form.own }}
+                        <form method='POST' action="">
+                                {{ form.own.label }}
+                                {{ form.own }}{{ form.submit }}
+                        </form>
                 </div>
         </div>
 {% endfor %}
