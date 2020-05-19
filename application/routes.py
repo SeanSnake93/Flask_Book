@@ -62,7 +62,7 @@ def film():
         print(form.errors)
 
     return render_template('film.html', title='Film', form=form)
-`
+
 @app.route('/catalogue')
 def home():
     filmData = Films.query.all()
