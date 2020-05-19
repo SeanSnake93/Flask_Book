@@ -6,7 +6,7 @@ from datetime import datetime
 def load_user(id):
     return Users.query.get(int(id))
 
-class Film(db.Model):
+class Films(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     year = db.Column(db.Integer, nullable=False)
