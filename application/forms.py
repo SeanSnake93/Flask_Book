@@ -15,8 +15,7 @@ class FilmsForm(FlaskForm):
 
     year = IntegerField("Year",
         validators=[
-            DataRequired(),
-            Length(min=4, max=4)
+            DataRequired()
             ]
     )
 
@@ -57,8 +56,7 @@ class FilmsForm(FlaskForm):
 
     code = IntegerField("Bar Code",
         validators=[
-            DataRequired(),
-            Length(min=3, max=10)
+            DataRequired()
             ]
     )
 
