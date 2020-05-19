@@ -9,13 +9,13 @@ def load_user(id):
 class Films(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    year = db.Column(db.Integer(4), nullable=False)
-    age = db.Column(db.Integer(5), nullable=False)
+    year = db.Column(db.Integer, nullable=False)
+    age = db.Column(db.Integer, nullable=False)
     director = db.Column(db.String(100), nullable=False)
     genre = db.Column(db.String(20), nullable=False)
     formating = db.Column(db.String(10), nullable=False)
     description = db.Column(db.String(500), nullable=False, unique=True)
-    code = db.Column(db.Integer(15), nullable=False, unique=True)
+    code = db.Column(db.Integer, nullable=False, unique=True)
 
     def __repr__(self):
         return ''.join([
