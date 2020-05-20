@@ -31,7 +31,7 @@ def add_collection(film):
             own = 'True'
         )
         print("filmOwn Content: ", filmOwn)
-        if filmOwn.int(films_id) != ownData.int(films_id):
+        if ownData[:2] != film:
             print("ADD TO TABLE")
             db.session.add(filmOwn)
         else:
