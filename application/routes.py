@@ -16,11 +16,12 @@ def about():
 @app.route('/catalogue', methods=['GET', 'POST'])
 def catalogue():
     filmData = Films.query.all()
-    ownData = Collection.query.all()
-    form = FilmsForm() and CollectionForm()
+    ownData = Collection.query.filter_by(user_id=current_user.id)
+    form = CollectionForm()
     if form.validate_on_submit():
+        filmID = filmData.id
         ownData = Collection(
-                owners=Films.id,
+                owners=filmID,
                 owner=current_user,
                 own=form.own.data
         )
