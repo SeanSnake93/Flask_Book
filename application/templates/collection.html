@@ -5,10 +5,10 @@
     {% for collection in films %}
     <div class="Film_List">
 
-        <h2>{{ collection.owner.title }} ({{ collection.owner.year }})<span style="font-size: 10px;">{{ collection.owner.age }}</span></h2>
-        <h3>{{ collection.owner.director }}, {{ collection.owner.genre }}, {{ collection.owner.type }}</h3>
-        <p>{{ collection.owner.description }}</p>
-        <p style="color: #99ebff;">{{ collection.owner.code }}</p>
+        <h2>{{ collection.owners.title }} ({{ collection.owners.year }})<span style="font-size: 10px;">{{ collection.owners.age }}</span></h2>
+        <h3>{{ collection.owners.director }}, {{ collection.owners.genre }}, {{ collection.owners.type }}</h3>
+        <p>{{ collection.owners.description }}</p>
+        <p style="color: #99ebff;">{{ collection.owners.code }}</p>
         
         
 
