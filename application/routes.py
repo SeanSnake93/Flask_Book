@@ -19,14 +19,14 @@ def catalogue():
     return render_template('catalogue.html', title='catalogue Page', films=filmData)
 
 @app.route('/catalogue/<name>/add', methods=['GET','POST'])
-def add_collection(Name):
+def add_collection(film):
     userID = current_user.id
     collectionData = Collection.query.all()
-    ownData = Collection.query.filter_by(user_id = userID).filter_by(films_id = Name)
-    if Name and userID not in collectionData:
+    ownData = collectionData.query.filter_by(user_id = userID).filter_by(films_id = film)
+    if film not in ownData.films_id:
         filmOwn = Collection(
             user_id = userID,
-            films_id = Name,
+            films_id = film,
             own = 'True'
         )
         db.session.add(filmOwn)
