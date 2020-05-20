@@ -21,7 +21,7 @@ class Films(db.Model):
     def __repr__(self):
         return ''.join([
             'Title: ', self.title, '(', self.year, ')', '\r\n',
-            self.content
+            self.description
             ])
 
 class Collection(db.Model):
