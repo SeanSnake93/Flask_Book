@@ -66,6 +66,15 @@ def collection():
     
     return render_template('collection.html', title='collection', films=myFilms)
 
+@app.route('/collection/<film>/delete', methods=['GET', 'POST'])
+@login_required
+def remove_collection(film):
+    userID = int(current_user.id)
+    myFilms = Collection.query.filter_by(user_id=userID).filter_by(films_id=film)
+    for film in myFilms:
+        db.session.delete(film)
+    return redirect(url_for('home'))
+
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------
