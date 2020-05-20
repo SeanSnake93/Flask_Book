@@ -15,21 +15,22 @@ def about():
 
 @app.route('/catalogue', methods=['GET', 'POST'])
 def catalogue():
-    User = current_user.id
     filmData = Films.query.all()
-    ownData = Collection.query.filter_by(user_id=User)
-    form = CollectionForm()
-    for film in filmData:
-        if form.validate_on_submit():
-            ownData = Collection(
-                    owners=film.id,
-                    owner=User,
-                    own=form.own.data
-            )
-            db.session.add(ownData)
-            db.session.commit()
+    return render_template('catalogue.html', title='catalogue Page', films=filmData, form=form)
 
-    return render_template('catalogue.html', title='catalogue Page', films=filmData, own=ownData, form=form)
+@app.route('/catalouge/<name>/add', methods=['GET','POST'])
+def add_collection(name):
+    userID = current_user.id
+    form = CollectionForm()
+    if form.validate_on_submit():
+        filmOwn = Collection(
+            user_id = userID,
+            films_id = name,
+            own = 'True'
+        )
+        db.session.add(filmOwn)
+        db.session.commit()
+    return redirect(url_for('collection'))
 
 
 @app.route('/add_movie', methods=['GET', 'POST'])

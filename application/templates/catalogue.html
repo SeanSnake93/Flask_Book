@@ -11,7 +11,9 @@
         <form method='POST' action="">
             <p>{{ form.own.label }}{{ form.own }}{{ form.submit }}</p>
         </form>
-        <form action="{{ url_for('add_collection', name = heh"></form>
+        <form action="{{ url_for('add_collection', name = film.id) }}">
+            <button type="submit">Add to collection</button>
+        </form>
     </div>
     {% endfor %}
 </div>
