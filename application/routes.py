@@ -22,9 +22,7 @@ def catalogue():
 def add_collection(film):
     userID = int(current_user.id)
     ownData = Collection.query.filter_by(user_id = userID)
-    print("so i know it is this: ", ownData)
-    id = Collection.films_id.query.filter_by(user_id = userID)
-    print("This is the id working: ", id)
+    id = Collection.films_id
     if film != id:
         filmOwn = Collection(
             user_id = userID,
@@ -32,6 +30,25 @@ def add_collection(film):
             own = 'True'
         )
         db.session.add(filmOwn)
+        db.session.commit()
+    else:
+        return redirect(url_for('catalogue'))
+    return redirect(url_for('collection'))
+
+
+@app.route('/catalogue/<film>/add', methods=['GET','POST'])
+def add_collection(film):
+    userID = int(current_user.id)
+    ownData = Collection.query.filter_by(user_id = userID)
+    id = Collection.films_id
+    if film != id:
+        filmOwn = Collection(
+            user_id = userID,
+            films_id = film,
+            own = 'True'
+        )
+        if filmOwn =! ownData:
+            db.session.add(filmOwn)
         db.session.commit()
     else:
         return redirect(url_for('catalogue'))
