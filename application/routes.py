@@ -23,7 +23,7 @@ def add_collection(film):
     userID = int(current_user.id)
     ownData = Collection.query.filter_by(user_id = userID)
     print("so i know it is this: ", ownData)
-    id = Collection.films_id
+    id = Collection.films_id.query.filter_by(user_id = userID)
     print("This is the id working: ", id)
     if film != id:
         filmOwn = Collection(
