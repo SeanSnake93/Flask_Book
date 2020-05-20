@@ -82,7 +82,7 @@ def edit_movie(film):
         form.formating.data = movie.formating.data
         form.description.data = movie.description.data
         form.code.data = movie.code.data
-    return render_template('editfilm.html', title='Edit Page', form=form)
+    return render_template('edit_movie.html', title='Edit Page', form=form)
 
 @app.route('/collection', methods=['GET', 'POST'])
 @login_required
