@@ -33,8 +33,8 @@ class Collection(db.Model):
     def __repr__(self):
         return ''.join([
             'user ID: ', str(self.user_id), '\r\n',
-            'Title: ', self.films_title, self.films_age, '\r\n',
-            self.films_description, '\r\n',
+            'Title: ', Films.films_title, Films.films_age, '\r\n',
+            Films.films_description, '\r\n',
             'Own This Movie: ', self.own            
             ])
 
