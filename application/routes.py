@@ -73,7 +73,7 @@ def remove_collection(film):
     myFilms = Collection.query.filter_by(user_id=userID).filter_by(films_id=film)
     for film in myFilms:
         db.session.delete(film)
-    return redirect(url_for('home'))
+    return redirect(url_for('collection'))
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
