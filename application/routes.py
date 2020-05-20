@@ -30,7 +30,7 @@ def add_collection(film):
             own = 'True'
         )
         if filmOwn not in ownData:
-            prind("ADD TO TABLE")
+            print("ADD TO TABLE")
             db.session.add(filmOwn)
         else:
             print("Already Exists")
