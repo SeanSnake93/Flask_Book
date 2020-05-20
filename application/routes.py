@@ -22,7 +22,7 @@ def catalogue():
 def add_collection(name):
     userID = current_user.id
     form = CollectionForm()
-    if form.validate_on_submit():
+    #if form.validate_on_submit():
         filmOwn = Collection(
             user_id = userID,
             films_id = name,
