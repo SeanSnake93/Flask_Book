@@ -100,10 +100,7 @@
                         </div>
                         {% endif %}
                 </div>
-                <form action="{{ url_for('edit_movie', film = film.id) }}">
-                        <button type="submit">{{ form.submit }}</button>
-                </form>
-        
+        {{ form.submit }}
     </form>
 </div>
 {% endblock %}

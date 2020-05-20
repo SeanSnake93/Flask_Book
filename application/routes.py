@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db,bcrypt
 from application.models import Films, Users, Collection
-from application.forms import FilmsForm, CollectionForm, RegistrationForm, LoginForm, UpdateAccountForm
+from application.forms import FilmsForm, CollectionForm, RegistrationForm, LoginForm, UpdateAccountForm, EditFilmsForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route('/')
@@ -56,7 +56,7 @@ def add_movie():
 
     return render_template('add_movie.html', title='add_movie', form=form)
 
-@app.route('/edit_movie', methods=['GET', 'POST'])
+@app.route('/catalogue/<film>/edit_movie', methods=['GET', 'POST'])
 @login_required
 def edit_movie(film):
     form = EditFilmsForm()

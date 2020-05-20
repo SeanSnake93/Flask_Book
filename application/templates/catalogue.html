@@ -9,8 +9,12 @@
         <p>{{ film.description }}</p>
         <p style="color: #99ebff;">{{ film.code }}</p>
         <form action="{{ url_for('add_collection', film = film.id) }}">
-            <button type="submit">Add to collection</button>
+            <button type="submit">Add to Collection</button>
         </form>
+        <form action="{{ url_for('edit_movie', film = film.id) }}">
+            <button type="submit">Edit Movie</button>
+        </form>
+        
     </div>
     {% endfor %}
 </div>
