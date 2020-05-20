@@ -56,13 +56,39 @@ def add_movie():
 
     return render_template('add_movie.html', title='add_movie', form=form)
 
+@app.route('/edit_movie', methods=['GET', 'POST'])
+@login_required
+def edit_movie(film):
+    form = EditFilmsForm()
+    editFilms = Films.query.filter_by(user_id=userID).filter_by(films_id=film)
+    movie = Films.query.filter_by(id=film).first
+    if form.validate_on_submit():
+        movie.title.data = form.title.data
+        movie.year.data = form.year.data
+        movie.age.data = form.age.data
+        movie.director.data = form.director.data
+        movie.genre.data = form.genre.data
+        movie.formating.data = form.formating.data
+        movie.description.data = form.description.data
+        movie.code.data = form.code.data
+        db.session.commit()
+        return redirect(url_for('collection'))
+    elif request.method =='GET':
+        form.title.data = movie.title.data 
+        form.year.data = movie.year.data
+        form.age.data = movie.age.data
+        form.director.data = movie.director.data
+        form.genre.data = movie.genre.data
+        form.formating.data = movie.formating.data
+        form.description.data = movie.description.data
+        form.code.data = movie.code.data
+    return render_template('editfilm.html', title='Edit Page', form=form)
+
 @app.route('/collection', methods=['GET', 'POST'])
 @login_required
 def collection():
     userID = int(current_user.id)
     myFilms = Collection.query.filter_by(user_id = userID).all()
-    for film in myFilms:
-        print(film)
     
     return render_template('collection.html', title='collection', films=myFilms)
 

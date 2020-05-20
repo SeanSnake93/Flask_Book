@@ -62,6 +62,64 @@ class FilmsForm(FlaskForm):
 
     submit = SubmitField('Add!')
 
+class EditFilmsForm(FlaskForm):
+    
+    title = StringField("Title",
+        validators=[
+            DataRequired(),
+            Length(min=3, max=50)
+            ]
+    )
+
+    year = IntegerField("Year",
+        validators=[
+            DataRequired()
+            ]
+    )
+
+    age = StringField("Rating",
+        validators=[
+            DataRequired(),
+            Length(min=1, max=3)
+            ]
+    )
+
+    director = StringField("Director",
+        validators=[
+            DataRequired(),
+            Length(min=3, max=50)
+            ]
+    )
+
+    genre = StringField("Genre",
+        validators=[
+            DataRequired(),
+            Length(min=3, max=50)
+            ]
+    )
+
+    formating = StringField("Format",
+        validators=[
+            DataRequired(),
+            Length(min=3, max=10)
+            ]
+    )
+
+    description = StringField("Description",
+        validators=[
+            DataRequired(),
+            Length(min=3, max=1000)
+            ]
+    )
+
+    code = IntegerField("Bar Code",
+        validators=[
+            DataRequired()
+            ]
+    )
+
+    submit = SubmitField('Add!')
+
 class CollectionForm(FlaskForm):
 
     own = BooleanField("Own this Movie? ")
