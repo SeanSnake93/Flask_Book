@@ -29,7 +29,7 @@ def add_collection(film):
             films_id = film,
             own = 'True'
         )
-        if filmOwn not in ownData:
+        if filmOwn.user_id and filmOwn.films_id not in ownData:
             print("ADD TO TABLE")
             db.session.add(filmOwn)
         else:
