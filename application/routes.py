@@ -58,10 +58,8 @@ def add_movie():
 
 @app.route('/catalogue/<film>/edit_movie', methods=['GET', 'POST'])
 @login_required
-def edit_movie(film):
+def edit_movie(currentMovie):
     form = EditFilmsForm()
-    currentMovie = Films.query.filter_by(id=int(film)).first()
-    print("MOVIE CONTENT: ", currentMovie)
     if form.validate_on_submit():
         currentMovie.title.data = form.title.data
         currentMovie.year.data = form.year.data
