@@ -29,24 +29,6 @@ def add_collection(film):
             films_id = film,
             own = 'True'
         )
-        db.session.add(filmOwn)
-        db.session.commit()
-    else:
-        return redirect(url_for('catalogue'))
-    return redirect(url_for('collection'))
-
-
-@app.route('/catalogue/<film>/add', methods=['GET','POST'])
-def add_collection(film):
-    userID = int(current_user.id)
-    ownData = Collection.query.filter_by(user_id = userID)
-    id = Collection.films_id
-    if film != id:
-        filmOwn = Collection(
-            user_id = userID,
-            films_id = film,
-            own = 'True'
-        )
         if filmOwn not in ownData:
             db.session.add(filmOwn)
         db.session.commit()
