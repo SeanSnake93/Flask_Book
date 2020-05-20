@@ -1,24 +1,17 @@
 {% extends "layout.html" %}
   
 {% block body_content %}
-<!--NEED TO ADD A FILTER TO THIS TO ONLY SHOW THINGS IN MY COLLECTION-->
-        {% for film in films %}
-                <div class="Film_List">
-                        <h2>{{ film.title }} ({{ film.year }})<span style="font-size: 10px;">{{ film.age }}</span></h2>
-                        <h3>{{ film.director }}, {{ film.genre }}, {{ film.type }}</h3>
-                        <p>{{ film.description }}</p>
-                        <p style="color: #99ebff;">{{ film.code }}</p>
-                        <form method='POST' action="">
-                                <p>{{ form.own.label }}{{ form.own }}{{ form.submit }}</p>
-                        </form>
-                </div>
-        {% endfor %}
+<div>
+    {% for film in films %}
+    <div class="Film_List">
+        <h2>{{ film.title }} ({{ film.year }})<span style="font-size: 10px;">{{ film.age }}</span></h2>
+        <h3>{{ film.director }}, {{ film.genre }}, {{ film.type }}</h3>
+        <p>{{ film.description }}</p>
+        <p style="color: #99ebff;">{{ film.code }}</p>
+        <form action="{{ url_for('remove_collection', film = film.id) }}">
+            <button type="submit">remove from collection</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
-
-    
-
-    
-
-    
-
-    
