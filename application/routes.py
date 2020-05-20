@@ -17,13 +17,14 @@ def about():
 def catalogue():
     User = current_user.id
     filmData = Films.query.all()
-    ownData = Collection.query.filter_by(user_id=user)
+    ownData = Collection.query.filter_by(user_id=User)
     form = CollectionForm()
-    if form.validate_on_submit():
-        filmID = filmData.id
+    for film in filmData:
+        if form.validate_on_submit():
+        filmID = film.id
         ownData = Collection(
                 owners=filmID,
-                owner=current_user,
+                owner=User,
                 own=form.own.data
         )
         db.session.add(ownData)
