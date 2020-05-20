@@ -18,7 +18,7 @@ def catalogue():
     filmData = Films.query.all()
     return render_template('catalogue.html', title='catalogue Page', films=filmData)
 
-@app.route('/catalouge/<name>/add', methods=['GET','POST'])
+@app.route('/catalogue/<name>/add', methods=['GET','POST'])
 def add_collection(name):
     userID = current_user.id
     form = CollectionForm()
