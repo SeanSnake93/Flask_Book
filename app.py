@@ -1,3 +1,5 @@
+#!/usr/bin/env Python3
+
 from application import app
 
 if __name__=='__main__':

@@ -1,0 +1,13 @@
+[Unit]
+
+Description=Flask_Book
+
+[Service]
+
+User=jenkins
+
+ExecStart=/var/lib/jenkins/workspace/example_freestyle/script/installation.sh
+
+[Install]
+
+WantedBy=multi-user.target
