@@ -22,8 +22,8 @@ def catalogue():
 def add_collection(film):
     userID = int(current_user.id)
     ownData = Collection.query.filter_by(user_id = userID)
-    print(ownData)
-    id = ownData.films_id
+    print("so i know it is this: ", ownData)
+    id = Collection.films_id
     if film != id:
         filmOwn = Collection(
             user_id = userID,
