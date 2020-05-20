@@ -21,7 +21,7 @@ def catalogue():
 @app.route('/catalogue/<film>/add', methods=['GET','POST'])
 def add_collection(film):
     userID = current_user.id
-    ownData = Collection.query.filter_by(user_id = userID).filter_by(films_id = film)
+    ownData = Collection.query.filter_by(user_id = userID).filter_by(films_id = film).all()
     if film not in ownData.films_id:
         filmOwn = Collection(
             user_id = userID,
