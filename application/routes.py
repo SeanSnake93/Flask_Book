@@ -27,8 +27,7 @@ def add_collection(film):
     if film != id:
         filmOwn = Collection(
             user_id = userID,
-            films_id = film,
-            own = 'True'
+            films_id = film
         )
         print("ownData[2] Content: ", ownData[2])
         if ownData[2] != film.id:

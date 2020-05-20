@@ -28,7 +28,6 @@ class Collection(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     films_id = db.Column(db.Integer, db.ForeignKey('films.id'), nullable=False)
-    own = db.Column(db.String(25), nullable=False)
 
 #    def __repr__(self):
  #       return ''.join([
