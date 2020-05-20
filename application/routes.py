@@ -14,6 +14,7 @@ def about():
     return render_template('about.html', title='About Page')
 
 @app.route('/catalogue', methods=['GET', 'POST'])
+@login required
 def catalogue():
     user = current_user.id
     filmData = Films.query.all()
