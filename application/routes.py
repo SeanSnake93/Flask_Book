@@ -15,7 +15,7 @@ def about():
 
 @app.route('/catalogue', methods=['GET', 'POST'])
 def catalogue():
-    user = current_user.id
+    User = current_user.id
     filmData = Films.query.all()
     ownData = Collection.query.filter_by(user_id=user)
     form = CollectionForm()
