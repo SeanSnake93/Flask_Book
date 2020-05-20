@@ -22,16 +22,11 @@ def catalogue():
 def add_collection(film):
     userID = int(current_user.id)
     ownData = Collection.query.filter_by(user_id = userID).all()
-    print("contents of ownData: ", ownData)
-    if film != ownData:
         filmOwn = Collection(
             user_id = userID,
             films_id = film
         )
-        print("ADD TO TABLE")
         db.session.add(filmOwn)
-    elif film == ownData:
-        print("Already Exists")
         db.session.commit()
     else:
         return redirect(url_for('catalogue'))
