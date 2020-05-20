@@ -30,13 +30,13 @@ class Collection(db.Model):
     films_id = db.Column(db.Integer, db.ForeignKey('films.id'), nullable=False)
     own = db.Column(db.String(25), nullable=False)
 
-    def __repr__(self):
-        return ''.join([
-            'user ID: ', str(self.user_id), '\r\n',
-            'Title: ', Films.films_title, Films.films_age, '\r\n',
-            Films.films_description, '\r\n',
-            'Own This Movie: ', self.own            
-            ])
+#    def __repr__(self):
+ #       return ''.join([
+  #          'user ID: ', str(self.user_id), '\r\n',
+   #         'Title: ', Films.films_title, Films.films_age, '\r\n',
+    #        Films.films_description, '\r\n',
+     #       'Own This Movie: ', self.own            
+      #      ])
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
