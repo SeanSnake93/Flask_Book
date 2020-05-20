@@ -14,7 +14,7 @@ class Films(db.Model):
     director = db.Column(db.String(100), nullable=False)
     genre = db.Column(db.String(20), nullable=False)
     formating = db.Column(db.String(10), nullable=False)
-    description = db.Column(db.String(2000), nullable=False, unique=True)
+    description = db.Column(db.String(1000), nullable=False, unique=True)
     code = db.Column(db.Integer, nullable=False, unique=True)
     owners = db.relationship('Collection', backref='owners', lazy=True)
 
