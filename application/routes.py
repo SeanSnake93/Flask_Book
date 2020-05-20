@@ -60,28 +60,28 @@ def add_movie():
 @login_required
 def edit_movie(film):
     form = EditFilmsForm()
-    movie = Films.query.filter_by(id=film).first()
-    print("mOVIE CONTENT: ", movie)
+    currentMovie = Films.query.filter_by(id=film).first()
+    print("mOVIE CONTENT: ", currentMovie)
     if form.validate_on_submit():
-        movie.title.data = form.title.data
-        movie.year.data = form.year.data
-        movie.age.data = form.age.data
-        movie.director.data = form.director.data
-        movie.genre.data = form.genre.data
-        movie.formating.data = form.formating.data
-        movie.description.data = form.description.data
-        movie.code.data = form.code.data
+        currentMovie.title.data = form.title.data
+        currentMovie.year.data = form.year.data
+        currentMovie.age.data = form.age.data
+        currentMovie.director.data = form.director.data
+        currentMovie.genre.data = form.genre.data
+        currentMovie.formating.data = form.formating.data
+        currentMovie.description.data = form.description.data
+        currentMovie.code.data = form.code.data
         db.session.commit()
         return redirect(url_for('collection'))
     elif request.method =='GET':
-        form.title.data = movie.title.data 
-        form.year.data = movie.year.data
-        form.age.data = movie.age.data
-        form.director.data = movie.director.data
-        form.genre.data = movie.genre.data
-        form.formating.data = movie.formating.data
-        form.description.data = movie.description.data
-        form.code.data = movie.code.data
+        form.title.data = currentMovie.title.data 
+        form.year.data = currentMovie.year.data
+        form.age.data = currentMovie.age.data
+        form.director.data = currentMovie.director.data
+        form.genre.data = currentMovie.genre.data
+        form.formating.data = currentMovie.formating.data
+        form.description.data = currentMovie.description.data
+        form.code.data = currentMovie.code.data
     return render_template('edit_movie.html', title='Edit Page', form=form)
 
 @app.route('/collection', methods=['GET', 'POST'])
