@@ -21,13 +21,13 @@ def catalogue():
     form = CollectionForm()
     for film in filmData:
         if form.validate_on_submit():
-        ownData = Collection(
-                owners=film.id,
-                owner=User,
-                own=form.own.data
-        )
-        db.session.add(ownData)
-        db.session.commit()
+            ownData = Collection(
+                    owners=film.id,
+                    owner=User,
+                    own=form.own.data
+            )
+            db.session.add(ownData)
+            db.session.commit()
 
     return render_template('catalogue.html', title='catalogue Page', films=filmData, own=ownData, form=form)
 
