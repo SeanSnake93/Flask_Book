@@ -22,7 +22,7 @@ def catalogue():
 def add_collection(name):
     userID = current_user.id
     exists = Collection.query.filter_by(user_id = userID).filter_by(films_id = name)
-    if not exists:
+    if name not in exists.films_id:
         filmOwn = Collection(
             user_id = userID,
             films_id = name,
