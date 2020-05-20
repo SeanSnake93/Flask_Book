@@ -47,7 +47,7 @@ def add_collection(film):
             films_id = film,
             own = 'True'
         )
-        if filmOwn =! ownData:
+        if filmOwn not in ownData:
             db.session.add(filmOwn)
         db.session.commit()
     else:
