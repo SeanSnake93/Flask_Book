@@ -14,7 +14,6 @@ def about():
     return render_template('about.html', title='About Page')
 
 @app.route('/catalogue', methods=['GET', 'POST'])
-@login required
 def catalogue():
     user = current_user.id
     filmData = Films.query.all()
@@ -151,13 +150,11 @@ def account_delete():
     db.session.delete(account)
     db.session.commit()
     return redirect(url_for('register'))
-
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hash_pw=bcrypt.generate_password_hash(form.password.data)
-
         user=Users(
             first_name=form.first_name.data,
             last_name=form.last_name.data,
