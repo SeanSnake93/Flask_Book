@@ -23,13 +23,13 @@ def add_collection(name):
     userID = current_user.id
     form = CollectionForm()
     #if form.validate_on_submit():
-        filmOwn = Collection(
-            user_id = userID,
-            films_id = name,
-            own = 'True'
-        )
-        db.session.add(filmOwn)
-        db.session.commit()
+    filmOwn = Collection(
+        user_id = userID,
+        films_id = name,
+        own = 'True'
+    )
+    db.session.add(filmOwn)
+    db.session.commit()
     return redirect(url_for('collection'))
 
 
