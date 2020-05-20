@@ -56,30 +56,30 @@ def add_movie():
 
     return render_template('add_movie.html', title='add_movie', form=form)
 
-@app.route('/catalogue/<currentMovie>/edit_movie', methods=['GET', 'POST'])
+@app.route('/catalogue/<id>/edit_movie', methods=['GET', 'POST'])
 @login_required
-def edit_movie(currentMovie):
+def edit_movie(id, title, year, age, director, genre, formating, description, code):
     form = EditFilmsForm()
     if form.validate_on_submit():
-        currentMovie.title.data = form.title.data
-        currentMovie.year.data = form.year.data
-        currentMovie.age.data = form.age.data
-        currentMovie.director.data = form.director.data
-        currentMovie.genre.data = form.genre.data
-        currentMovie.formating.data = form.formating.data
-        currentMovie.description.data = form.description.data
-        currentMovie.code.data = form.code.data
+        title = form.title.data
+        year = form.year.data
+        age = form.age.data
+        director = form.director.data
+        genre = form.genre.data
+        formating = form.formating.data
+        description = form.description.data
+        code = form.code.data
         db.session.commit()
         return redirect(url_for('collection'))
     elif request.method =='GET':
-        form.title.data = currentMovie.title.data 
-        form.year.data = currentMovie.year.data
-        form.age.data = currentMovie.age.data
-        form.director.data = currentMovie.director.data
-        form.genre.data = currentMovie.genre.data
-        form.formating.data = currentMovie.formating.data
-        form.description.data = currentMovie.description.data
-        form.code.data = currentMovie.code.data
+        form.title.data = title
+        form.year.data = year
+        form.age.data = age
+        form.director.data = director
+        form.genre.data = genre
+        form.formating.data = formating
+        form.description.data = description
+        form.code.data = code
     return render_template('edit_movie.html', title='Edit Page', form=form)
 
 @app.route('/collection', methods=['GET', 'POST'])
