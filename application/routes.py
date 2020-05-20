@@ -61,7 +61,7 @@ def add_movie():
 def edit_movie(film):
     form = EditFilmsForm()
     movie = Films.query.filter_by(id=film).first
-    print(movie)
+    print("mOVIE CONTENT: ", movie)
     if form.validate_on_submit():
         movie.title.data = form.title.data
         movie.year.data = form.year.data
