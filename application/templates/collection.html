@@ -10,9 +10,7 @@
         <p>{{ collection.owner.description }}</p>
         <p style="color: #99ebff;">{{ collection.owner.code }}</p>
         
-        <form action="{{ url_for('remove_collection', film = collection.owner.id) }}">
-            <button type="submit">remove from collection</button>
-        </form>
+        
 
     </div>
     {% endfor %}
