@@ -59,22 +59,10 @@ def add_movie():
 @app.route('/collection', methods=['GET', 'POST'])
 @login_required
 def collection():
-    user = current_user.id
-    form = CollectionForm()
-    myData = Collection.query.filter_by(user_id=user).all()
-    if form.validate_on_submit():
-        ownerData = Collection(
-                own=form.own.data
-        )
+    userID = int(current_user.id)
+    filmData = Films.query.filter_by(owner=userID).all()
 
-        db.session.add(ownerData)
-        db.session.commit()
-
-        return redirect(url_for('home'))
-    else:
-        print(form.errors)
-
-    return render_template('collection.html', title='collection', collection=myData, form=form)
+    return render_template('collection.html', title='collection', films=filmData)
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
