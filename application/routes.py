@@ -22,14 +22,12 @@ def catalogue():
 def add_collection(film):
     userID = int(current_user.id)
     ownData = Collection.query.filter_by(user_id = userID).all()
-        filmOwn = Collection(
-            user_id = userID,
-            films_id = film
-        )
-        db.session.add(filmOwn)
-        db.session.commit()
-    else:
-        return redirect(url_for('catalogue'))
+    filmOwn = Collection(
+        user_id = userID,
+        films_id = film
+    )
+    db.session.add(filmOwn)
+    db.session.commit()
     return redirect(url_for('collection'))
 
 
