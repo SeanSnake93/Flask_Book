@@ -63,7 +63,8 @@ def collection():
     filmData = []
     myFilms = Collection.query.filter_by(user_id = userID).all()
     for film in myFilms:
-        filmData.append(Films.query.filter_by(id=Films.films_id).all())
+        Data = Films.query.filter_by(id=film.films_id).all()
+        filmData = filmData + Data
 
     return render_template('collection.html', title='collection', films=filmData)
 
