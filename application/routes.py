@@ -61,6 +61,7 @@ def add_movie():
 def collection():
     userID = int(current_user.id)
     myFilms = Collection.query.filter_by(user_id = userID).all()
+    print(myFilms)
     
     return render_template('collection.html', title='collection', films=myFilms)
 
