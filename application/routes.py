@@ -21,15 +21,17 @@ def catalogue():
 @app.route('/catalogue/<name>/add', methods=['GET','POST'])
 def add_collection(name):
     userID = current_user.id
-    form = CollectionForm()
-    #if form.validate_on_submit():
-    filmOwn = Collection(
-        user_id = userID,
-        films_id = name,
-        own = 'True'
-    )
-    db.session.add(filmOwn)
-    db.session.commit()
+    exists = Collections.query.filter_by(user_id = userID).filter_by(films_id = name)
+    if not exists:
+        filmOwn = Collection(
+            user_id = userID,
+            films_id = name,
+            own = 'True'
+        )
+        db.session.add(filmOwn)
+        db.session.commit()
+    else:
+        return redirect(url_for('catalogue'))
     return redirect(url_for('collection'))
 
 
