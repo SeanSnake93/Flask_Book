@@ -60,7 +60,7 @@ def add_movie():
 @login_required
 def collection():
     userID = int(current_user.id)
-    filmData = Films.query.filter_by(user_id=userID).all()
+    filmData = Films.query.filter_by(Collections.user_id=userID).all()
 
     return render_template('collection.html', title='collection', films=filmData)
 
