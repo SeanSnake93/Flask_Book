@@ -8,9 +8,6 @@
         <h3>{{ film.director }}, {{ film.genre }}, {{ film.type }}</h3>
         <p>{{ film.description }}</p>
         <p style="color: #99ebff;">{{ film.code }}</p>
-        <form method='POST' action="">
-            <p>{{ form.own.label }}{{ form.own }}{{ form.submit }}</p>
-        </form>
         <form action="{{ url_for('add_collection', name = film.id) }}">
             <button type="submit">Add to collection</button>
         </form>
