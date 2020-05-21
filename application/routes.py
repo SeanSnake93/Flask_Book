@@ -59,26 +59,27 @@ def add_movie():
 @login_required
 def edit_movie(filmID):
     form = EditFilmsForm()
+    film = Films.query.filter_by(id=filmID).first()
     if form.validate_on_submit():
-        filmID.title = form.title.data
-        filmID.year = form.year.data
-        filmID.age = form.age.data
-        filmID.director = form.director.data
-        filmID.genre = form.genre.data
-        filmID.formating = form.formating.data
-        filmID.description = form.description.data
-        filmID.code = form.code.data
+        film.title = form.title.data
+        film.year = form.year.data
+        film.age = form.age.data
+        film.director = form.director.data
+        film.genre = form.genre.data
+        film.formating = form.formating.data
+        film.description = form.description.data
+        film.code = form.code.data
         db.session.commit()
         return redirect(url_for('collection'))
     elif request.method =='GET':
-        form.title.data = filmID.title
-#        form.year.data = int(filmID.year)
-#        form.age.data = filmID.age
-        form.director.data = filmID.director
-        form.genre.data = filmID.genre
-        form.formating.data = filmID.formating
-        form.description.data = filmID.description
-#        form.code.data = int(filmID.code)
+        form.title.data = film.title
+        form.year.data = film.year
+        form.age.data = filmID.age
+        form.director.data = film.director
+        form.genre.data = film.genre
+        form.formating.data = film.formating
+        form.description.data = film.description
+        form.code.data = film.code
     return render_template('edit_movie.html', title='Edit Page', form=form)
 
 @app.route('/collection', methods=['GET', 'POST'])
