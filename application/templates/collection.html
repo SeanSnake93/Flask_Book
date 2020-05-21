@@ -9,11 +9,11 @@
         <h3>{{ collection.owners.director }}, {{ collection.owners.genre }}, {{ collection.owners.type }}</h3>
         <p>{{ collection.owners.description }}</p>
         <p style="color: #99ebff;">{{ collection.owners.code }}</p>
-        
+        {% if current_user.is_authenticated %}
         <form action="{{ url_for('remove_collection', film = collection.owners.id) }}">
                 <button type="submit">remove from collection</button>
         </form>
-
+        {% endif %}
     </div>
     {% endfor %}
 </div>

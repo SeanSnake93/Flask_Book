@@ -46,7 +46,7 @@ span {
 	margin: 0;
 	border: 0;
 	padding: 0;
-	height: 150px;
+	height: 100px;
 	width: 100%;
 	min-width: 100vh;
 	z-index: 10;
@@ -59,16 +59,14 @@ span {
 	border: 0;
 	padding: 0;
 	background-color: #000000;
-	height: 100px;
+	height: inherit;
 	width: 80%;
-	max-width: 1000px;
 	position: center;
 }
 
 #Main-Menu ul li {
 	margin: 0;
 	height: 100%;
-	width: 10%;
 	border: 0;
 	padding: auto;
 	text-decoration: none;
@@ -105,16 +103,14 @@ span {
 	transition: 1s;
 }
 
-.Menu-Home {
-	display: block;
-	bottom: -50px;
+.Menu-top li {
+	width: 25%;
 	position: absolute;
 }
 
-.Main-Menu {
-	top: -50px;
-	position: fixed;
-	display: block;
+.Main-bottom {
+	width: 50%;
+	position: absolute;
 }
 
 /*--- Menu_Settings-END ---*/
