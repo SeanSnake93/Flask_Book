@@ -72,13 +72,13 @@ def edit_movie(filmID):
         return redirect(url_for('collection'))
     elif request.method =='GET':
         form.title.data = filmID.title
-        form.year.data = filmID.year
+        form.year.data = filmID.int(year)
         form.age.data = filmID.age
         form.director.data = filmID.director
         form.genre.data = filmID.genre
         form.formating.data = filmID.formating
         form.description.data = filmID.description
-        form.code.data = filmID.code
+        form.code.data = filmID.int(code)
     return render_template('edit_movie.html', title='Edit Page', form=form)
 
 @app.route('/collection', methods=['GET', 'POST'])
