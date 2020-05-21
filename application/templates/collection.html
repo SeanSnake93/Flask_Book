@@ -4,16 +4,13 @@
 <div>
     {% for collection in films %}
     <div class="Film_List">
-
-        <h2>{{ collection.owners.title }} ({{ collection.owners.year }})<span style="font-size: 10px;">{{ collection.owners.age }}</span></h2>
-        <h3>{{ collection.owners.director }}, {{ collection.owners.genre }}, {{ collection.owners.formating }}</h3>
-        <p>{{ collection.owners.description }}</p>
-        <p style="color: #99ebff;">{{ collection.owners.code }}</p>
-        {% if current_user.is_authenticated %}
+        <h2>{{ collection.owners.title }} <span style="font-size: 16px">({{ collection.owners.year }})</span>  <span style="font-size: 10px;">{{ collection.owners.age }}</span></br>
+        <span style="font-size: 14px;">{{ collection.owners.director }}, {{ collection.owners.genre }}, {{ collection.owners.formating }}</span></h3>
+        <p>{{ collection.owners.description }}</br>
+        <span style="font-size: 10px;">{{ collection.owners.code }}</span></p>
         <form action="{{ url_for('remove_collection', film = collection.owners.id) }}">
                 <button type="submit">remove from collection</button>
         </form>
-        {% endif %}
     </div>
     {% endfor %}
 </div>

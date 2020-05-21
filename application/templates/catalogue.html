@@ -4,10 +4,10 @@
 <div>
     {% for film in films %}
     <div class="Film_List">
-        <h2>{{ film.title }} <span style="font-size: 16px">({{ film.year }})</span>  <span style="font-size: 10px;">{{ film.age }}</span></h3>
-        <p><span style="font-size: 14px;">{{ film.director }}, {{ film.genre }}, {{ film.formating }}</span></br>
-        {{ film.description }}</p>
-        <p style="font-size: 10px;">{{ film.code }}</p>
+        <h2>{{ film.title }} <span style="font-size: 16px">({{ film.year }})</span>  <span style="font-size: 10px;">{{ film.age }}</span></br>
+        <span style="font-size: 14px;">{{ film.director }}, {{ film.genre }}, {{ film.formating }}</span></h3>
+        <p>{{ film.description }}</br>
+        <span style="font-size: 10px;">{{ film.code }}</span></p>
         <ul>
             <li style="text-decoration: none; display: block; float: left; margin-right: 5px;">
                 <form action="{{ url_for('add_collection', film = film.id) }}">

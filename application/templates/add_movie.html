@@ -6,7 +6,7 @@
         <form method='POST' action="">
                 {{ form.hidden_tag() }} <!--- This must be at the top of the form to enable hidden key --->
                 <div class="form-group">
-                    {{ form.title.label }}
+                    {{ form.title.label }}</br>
                     {{ form.title }}
                     {% if form.title.errors %}
                     <div class="error">
@@ -18,7 +18,7 @@
             </div>
             <br>
             <div class="form-group">
-                        {{ form.year.label }}
+                        {{ form.year.label }}</br>
                         {{ form.year }}
                         {% if form.year.errors %}
                         <div class="error">
@@ -30,7 +30,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.genre.label }}
+                        {{ form.genre.label }}</br>
                         {{ form.genre }}
                         {% if form.genre.errors %}
                         <div class="error">
@@ -42,7 +42,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.director.label }}
+                        {{ form.director.label }}</br>
                         {{ form.director }}
                         {% if form.director.errors %}
                         <div class="error">
@@ -54,7 +54,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.age.label }}
+                        {{ form.age.label }}</br>
                         {{ form.age }}
                         {% if form.age.errors %}
                         <div class='error'>
@@ -66,7 +66,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.description.label }}
+                        {{ form.description.label }}</br>
                         {{ form.description }}
                         {% if form.description.errors %}
                         <div class='error'>
@@ -78,7 +78,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.formating.label }}
+                        {{ form.formating.label }}</br>
                         {{ form.formating }}
                         {% if form.formating.errors %}
                         <div class='error'>
@@ -90,7 +90,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                        {{ form.code.label }}
+                        {{ form.code.label }}</br>
                         {{ form.code }}
                         {% if form.code.errors %}
                         <div class='error'>
