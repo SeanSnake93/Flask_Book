@@ -4,22 +4,22 @@
 <div>
     {% for film in films %}
     <div class="Film_List">
-        <h2>{{ film.title }} ({{ film.year }})<span style="font-size: 10px;">{{ film.age }}</span></h2>
-        <h3>{{ film.director }}, {{ film.genre }}, {{ film.type }}</h3>
+        <h2>{{ film.title }}</h2> <h3>({{ film.year }})<span style="font-size: 10px;">{{ film.age }}</span></h3>
+        <p style="font-size: 14px;">{{ film.director }}, {{ film.genre }}, {{ film.type }}</p>
         <p>{{ film.description }}</p>
-        <p>{{ film.code }}</p>
+        <p style="font-size: 10px;">{{ film.code }}</p>
         <ul>
-            <li>
+            <li style="text-decoration: none; display: block; float: left;">
                 <form action="{{ url_for('add_collection', film = film.id) }}">
                     <button type="submit">I own this Movie</button>
                 </form>
             </li>
-            <li>
+            <li style="text-decoration: none; display: block; float: left;">
                 <form action="{{ url_for('edit_movie', filmID = film.id) }}">
                     <button type="submit">Edit this Movie</button>
                 </form>
             </li>
-            <li>
+            <li style="text-decoration: none; display: block; float: left;">
                 <form action="{{ url_for('delete', filmID = film.id) }}">
                     <button type="submit">Delete this Movie</button>
                 </form>
