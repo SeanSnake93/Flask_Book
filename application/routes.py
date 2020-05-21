@@ -4,37 +4,41 @@ from application.models import Films, Users, Collection
 from application.forms import FilmsForm, CollectionForm, RegistrationForm, LoginForm, UpdateAccountForm, EditFilmsForm
 from flask_login import login_user, current_user, logout_user, login_required
 
+# By having two app.routes i have defined a function that is accessable via both extentions
 @app.route('/')
 @app.route('/home')
 def home():
+    # This is going to be used as a navidation tool. this is the purpose of this page and requires no important data
     return render_template('home.html', title='Home Page')
 
 @app.route('/about')
 def about():
+    # This is to explain the functionality of the site.
     return render_template('about.html', title='About Page')
 
 @app.route('/catalogue', methods=['GET', 'POST'])
 def catalogue():
-    filmData = Films.query.all()
-    return render_template('catalogue.html', title='catalogue Page', films=filmData)
+    filmData = Films.query.all() # pulls the Films table and stores in in the filmData Variable
+    return render_template('catalogue.html', title='catalogue Page', films=filmData) # This returns the filmData as films( called using a for loop to print each film )
 
 @app.route('/catalogue/<film>/add', methods=['GET','POST'])
-def add_collection(film):
-    userID = int(current_user.id)
+def add_collection(film): # filtered on html by a forloop ( film in films ), film contains only the "film.id"
+    userID = int(current_user.id) # in order to add the film to users collection, i pulled the user id...
     filmOwn = Collection(
         user_id = userID,
         films_id = film
     )
-    db.session.add(filmOwn)
-    db.session.commit()
-    return redirect(url_for('collection'))
+    # assigned to be added to the Collection table, organised data is saved in a variable filmOwn
+    db.session.add(filmOwn) # filmOwn is added to the Collection table
+    db.session.commit() # commit/confirm the changes
+    return redirect(url_for('collection')) # Now in Users collection of films, show the user their collection.
 
 
 @app.route('/add_movie', methods=['GET', 'POST'])
 @login_required
 def add_movie():
-    form = FilmsForm()
-    if form.validate_on_submit():
+    form = FilmsForm() # pull FilmForm from models.py
+    if form.validate_on_submit(): # if when button is pressed the form is valid so this...
         filmData = Films(
                 title=form.title.data,
                 year=form.year.data,
