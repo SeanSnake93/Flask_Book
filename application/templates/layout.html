@@ -9,7 +9,7 @@
 	</head>
 	<!------------------------------------------------------------------------------------------------------->
 	<body>
-		<div id="Main-Menu" class="Menu_top">
+		<div id="Main-Menu">
 			<ul>
 				<li><a href="{{ url_for('home') }}">Home</a></li>
 				<li><a href="{{ url_for('about') }}">About</a></li>
@@ -23,7 +23,7 @@
 			</ul>
 		</div>
 
-		<div id="Main-Menu" class="Menu_bottom">
+		<div id="Sub-Menu>
 			<ul>
 				<li><a href="{{ url_for('catalogue') }}">Movie List</a></li>
 				{% if current_user.is_authenticated %}
