@@ -65,7 +65,7 @@ span {
 
 #Main-Menu ul li {
 	margin: 0;
-	height: 100%;
+	height: inherit;
 	border: 0;
 	padding: auto;
 	text-decoration: none;
@@ -73,7 +73,9 @@ span {
 	float: left;
 	opacity: 0.5;
 	transition: 0.5s;
-	background-color: #000406;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	background-color: #05202e;
 }
 
 #Main-Menu li a {
@@ -89,17 +91,23 @@ span {
 	vertical-align: middle;
 	text-decoration: none;
 	transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
 }
 
 #Main-Menu ul li:hover {
 	opacity: 1;
 	transition: 1s;
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
 }
 
 #Main-Menu ul li a:hover {
 	color: #111111;
 	background-color: #999999;
 	transition: 1s;
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
 }
 
 .Menu-top li {
@@ -117,11 +125,9 @@ span {
 /*--- Wrapper ---*/
 
 .Wrapper {
-	width: 100%;
+	width: 80%;
 	height: 100%;
-	margin-top: 150px;
-	width: 100%;
-	height: 100%;
+	margin-top: 10px;
 	background-color: #999999;
 }
 
