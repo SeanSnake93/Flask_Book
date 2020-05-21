@@ -59,16 +59,16 @@ span {
 	border: 0;
 	padding: 0;
 	background-color: #000000;
-	height: 33.3%;
-	width: 100%;
+	height: 100px;
+	width: 80%;
 	max-width: 1000px;
 	position: center;
 }
 
-#Main-Menu li {
+#Main-Menu ul li {
 	margin: 0;
 	height: 100%;
-	width: 25%;
+	width: 10%;
 	border: 0;
 	padding: auto;
 	text-decoration: none;
@@ -94,12 +94,12 @@ span {
 	transition: 0.5s;
 }
 
-#Main-Menu li:hover {
+#Main-Menu ul li:hover {
 	opacity: 1;
 	transition: 1s;
 }
 
-#Main-Menu li a:hover {
+#Main-Menu ul li a:hover {
 	color: #111111;
 	background-color: #999999;
 	transition: 1s;
@@ -127,7 +127,7 @@ span {
 	margin-top: 150px;
 	width: 100%;
 	height: 100%;
-	background-color: #ffffff;
+	background-color: #999999;
 }
 
 /*--- Wrapper-END ---*/
