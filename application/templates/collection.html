@@ -6,7 +6,7 @@
     <div class="Film_List">
 
         <h2>{{ collection.owners.title }} ({{ collection.owners.year }})<span style="font-size: 10px;">{{ collection.owners.age }}</span></h2>
-        <h3>{{ collection.owners.director }}, {{ collection.owners.genre }}, {{ collection.owners.type }}</h3>
+        <h3>{{ collection.owners.director }}, {{ collection.owners.genre }}, {{ collection.owners.formating }}</h3>
         <p>{{ collection.owners.description }}</p>
         <p style="color: #99ebff;">{{ collection.owners.code }}</p>
         {% if current_user.is_authenticated %}
