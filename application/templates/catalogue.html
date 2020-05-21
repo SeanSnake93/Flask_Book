@@ -4,7 +4,7 @@
 <div>
     {% for film in films %}
     <div class="Film_List">
-        <h2>{{ film.title }}</h2> <h3>({{ film.year }})<span style="font-size: 10px;">{{ film.age }}</span></h3>
+        <h2>{{ film.title }} <span style="font-size: 16px">({{ film.year }})</span>  <span style="font-size: 10px;">{{ film.age }}</span></h3>
         <p style="font-size: 14px;">{{ film.director }}, {{ film.genre }}, {{ film.type }}</p>
         <p>{{ film.description }}</p>
         <p style="font-size: 10px;">{{ film.code }}</p>
