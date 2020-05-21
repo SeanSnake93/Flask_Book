@@ -54,7 +54,7 @@ span {
 }
 
 #Main-Menu ul {
-	margin: auto;
+	margin: 0;
 	border: 0;
 	padding: 0;
 	background-color: #000000;
@@ -63,7 +63,7 @@ span {
 	position: center;
 }
 
-#Main-Menu ul li {
+#Main-Menu li {
 	margin: 0;
 	height: inherit;
 	border: 0;
