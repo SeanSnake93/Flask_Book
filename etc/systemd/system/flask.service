@@ -6,7 +6,7 @@ Description=Flask_Book
 
 User=jenkins
 
-ExecStart=/var/lib/jenkins/workspace/example_freestyle/script/installation.sh
+ExecStart=/var/lib/jenkins/workspace/Flask_book/script/installation.sh
 
 [Install]
 
