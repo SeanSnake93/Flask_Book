@@ -47,7 +47,7 @@ span {
 	border: 0;
 	padding: 0;
 	height: 100px;
-	width: 100vh;
+	width: 100%;
 	min-width: 100vh;
 	z-index: 10;
 	background-color: #333;
@@ -103,7 +103,7 @@ span {
 }
 
 .Menu-top li {
-	width: 50%;
+	width: 25%;
 	position: absolute;
 }
 
