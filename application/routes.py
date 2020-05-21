@@ -4,6 +4,8 @@ from application.models import Films, Users, Collection
 from application.forms import FilmsForm, CollectionForm, RegistrationForm, LoginForm, UpdateAccountForm, EditFilmsForm
 from flask_login import login_user, current_user, logout_user, login_required
 
+# --- Creating a C.R.U.D site ( Create . Read . Update . Delete ) ---
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -13,22 +15,7 @@ def home():
 def about():
     return render_template('about.html', title='About Page')
 
-@app.route('/catalogue', methods=['GET', 'POST'])
-def catalogue():
-    filmData = Films.query.all()
-    return render_template('catalogue.html', title='catalogue Page', films=filmData)
-
-@app.route('/catalogue/<film>/add', methods=['GET','POST'])
-def add_collection(film):
-    userID = int(current_user.id)
-    filmOwn = Collection(
-        user_id = userID,
-        films_id = film
-    )
-    db.session.add(filmOwn)
-    db.session.commit()
-    return redirect(url_for('collection'))
-
+# --- CREATE-START ---
 
 @app.route('/add_movie', methods=['GET', 'POST'])
 @login_required
@@ -51,6 +38,37 @@ def add_movie():
     else:
         print(form.errors)
     return render_template('add_movie.html', title='add_movie', form=form)
+
+@app.route('/catalogue/<film>/add', methods=['GET','POST'])
+def add_collection(film):
+    userID = int(current_user.id)
+    filmOwn = Collection(
+        user_id = userID,
+        films_id = film
+    )
+    db.session.add(filmOwn)
+    db.session.commit()
+    return redirect(url_for('collection'))
+
+# --- CREATE---END ---
+# --- READ-START ---
+# --- READ---END ---
+
+@app.route('/catalogue', methods=['GET', 'POST'])
+def catalogue():
+    filmData = Films.query.all()
+    return render_template('catalogue.html', title='catalogue Page', films=filmData)
+
+@app.route('/collection', methods=['GET', 'POST'])
+@login_required
+def collection():
+    userID = int(current_user.id)
+    myFilms = Collection.query.filter_by(user_id = userID).all()
+    return render_template('collection.html', title='collection', films=myFilms)
+
+# --- READ---END ---
+# --- UPDATE-START ---
+
 
 @app.route('/edit_movie/<filmID>', methods=['GET', 'POST'])
 @login_required
@@ -79,6 +97,9 @@ def edit_movie(filmID):
         form.code.data = film.code
     return render_template('edit_movie.html', title='Edit Page', form=form)
 
+# --- UPDATE---END ---
+# --- DELETE-START ---
+
 @app.route('/catalogue/<filmID>/delete', methods=['GET', 'POST'])
 @login_required
 def delete(filmID):
@@ -91,13 +112,6 @@ def delete(filmID):
     db.session.commit()
     return redirect(url_for('catalogue'))
 
-@app.route('/collection', methods=['GET', 'POST'])
-@login_required
-def collection():
-    userID = int(current_user.id)
-    myFilms = Collection.query.filter_by(user_id = userID).all()
-    return render_template('collection.html', title='collection', films=myFilms)
-
 @app.route('/collection/<film>/delete', methods=['GET', 'POST'])
 @login_required
 def remove_collection(film):
@@ -107,6 +121,8 @@ def remove_collection(film):
         db.session.delete(film)
     db.session.commit()
     return redirect(url_for('collection'))
+
+# --- DELETE---END ---
 
 #-----------------------------------------------------------------------------------------------
 #--- USERS -------------------------------------------------------------------------------------
