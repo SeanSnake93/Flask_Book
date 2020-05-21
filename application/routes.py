@@ -83,7 +83,10 @@ def edit_movie(filmID):
 @login_required
 def delete(filmID):
     film = Films.query.filter_by(id=filmID).first()
+    collections = Collection.query.filter_by(films_id=filmID).all()
     print("Removing", film.title, "from Database")
+    for collection in collections:
+        db.session.delete(collection)
     db.session.delete(film)
     db.session.commit()
     return redirect(url_for('catalogue'))
