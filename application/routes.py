@@ -73,7 +73,7 @@ def edit_movie(filmID):
     elif request.method =='GET':
         form.title.data = filmID.title
 #        form.year.data = int(filmID.year)
-        form.age.data = filmID.age
+#        form.age.data = filmID.age
         form.director.data = filmID.director
         form.genre.data = filmID.genre
         form.formating.data = filmID.formating
