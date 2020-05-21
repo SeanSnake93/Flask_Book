@@ -55,30 +55,30 @@ def add_movie():
 
     return render_template('add_movie.html', title='add_movie', form=form)
 
-@app.route('/catalogue/<id>/edit_movie', methods=['GET', 'POST'])
+@app.route('/catalogue/<filmID>/edit_movie', methods=['GET', 'POST'])
 @login_required
-def edit_movie(id, title, year, age, director, genre, formating, description, code):
+def edit_movie(filmID):
     form = EditFilmsForm()
     if form.validate_on_submit():
-        title = form.title.data
-        year = form.year.data
-        age = form.age.data
-        director = form.director.data
-        genre = form.genre.data
-        formating = form.formating.data
-        description = form.description.data
-        code = form.code.data
+        filmID.title = form.title.data
+        filmID.year = form.year.data
+        filmID.age = form.age.data
+        filmID.director = form.director.data
+        filmID.genre = form.genre.data
+        filmID.formating = form.formating.data
+        filmID.description = form.description.data
+        filmID.code = form.code.data
         db.session.commit()
         return redirect(url_for('collection'))
     elif request.method =='GET':
-        form.title.data = title
-        form.year.data = year
-        form.age.data = age
-        form.director.data = director
-        form.genre.data = genre
-        form.formating.data = formating
-        form.description.data = description
-        form.code.data = code
+        form.title.data = filmID.title
+        form.year.data = filmID.year
+        form.age.data = filmID.age
+        form.director.data = filmID.director
+        form.genre.data = filmID.genre
+        form.formating.data = filmID.formating
+        form.description.data = filmID.description
+        form.code.data = filmID.code
     return render_template('edit_movie.html', title='Edit Page', form=form)
 
 @app.route('/collection', methods=['GET', 'POST'])
