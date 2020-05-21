@@ -11,7 +11,6 @@ def home():
 
 @app.route('/about')
 def about():
-
     return render_template('about.html', title='About Page')
 
 @app.route('/catalogue', methods=['GET', 'POST'])
@@ -46,14 +45,11 @@ def add_movie():
                 description=form.description.data,
                 code=form.code.data
         )
-
         db.session.add(filmData)
         db.session.commit()
-
         return redirect(url_for('home'))
     else:
         print(form.errors)
-
     return render_template('add_movie.html', title='add_movie', form=form)
 
 @app.route('/edit_movie/<filmID>', methods=['GET', 'POST'])
@@ -83,12 +79,20 @@ def edit_movie(filmID):
         form.code.data = film.code
     return render_template('edit_movie.html', title='Edit Page', form=form)
 
+@app.route('/catalogue/<filmID>/delete', methods=['GET', 'POST'])
+@login_required
+def delete(filmID):
+    film = Films.query.filter_by(id=filmID).first()
+    print("Removing", film.title, "from Database")
+    db.session.delete(film)
+    db.session.commit()
+    return redirect(url_for('catalogue'))
+
 @app.route('/collection', methods=['GET', 'POST'])
 @login_required
 def collection():
     userID = int(current_user.id)
     myFilms = Collection.query.filter_by(user_id = userID).all()
-    
     return render_template('collection.html', title='collection', films=myFilms)
 
 @app.route('/collection/<film>/delete', methods=['GET', 'POST'])
@@ -112,14 +116,12 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hash_pw=bcrypt.generate_password_hash(form.password.data)
-
         user=Users(
             first_name=form.first_name.data,
             last_name=form.last_name.data,
             email=form.email.data, 
             password=hash_pw
             )
-
         db.session.add(user)
         db.session.commit()
 
@@ -143,7 +145,6 @@ def login():
                 return redirect(next_page)
             else:
                 return redirect(url_for('home'))
-
     return render_template('login.html', title='Login Page', form=form)
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -185,10 +186,8 @@ def account_delete():
             email=form.email.data, 
             password=hash_pw
             )
-
         db.session.add(user)
         db.session.commit()
-
         return redirect(url_for('catalogue'))
     return render_template('register.html', title='Register', form=form)
 
