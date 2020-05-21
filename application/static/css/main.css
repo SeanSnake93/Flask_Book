@@ -66,6 +66,7 @@ span {
 #Main-Menu li {
 	margin: 0;
 	height: inherit;
+	min-width: 25%;
 	border: 0;
 	padding: auto;
 	text-decoration: none;
@@ -111,11 +112,11 @@ span {
 }
 
 .Menu-top ul li {
-	width: 100%;
+	width: 25%;
 	position: absolute;
 }
 
-.Main-bottom ul li {
+.Menu-bottom ul li {
 	width: 50%;
 	position: absolute;
 }
