@@ -55,7 +55,7 @@ def add_movie():
 
     return render_template('add_movie.html', title='add_movie', form=form)
 
-@app.route('/catalogue/<filmID>/edit_movie', methods=['GET', 'POST'])
+@app.route('/edit_movie/<filmID>', methods=['GET', 'POST'])
 @login_required
 def edit_movie(filmID):
     form = EditFilmsForm()
