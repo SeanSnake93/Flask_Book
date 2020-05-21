@@ -110,12 +110,12 @@ span {
 	-moz-transition: 1s;
 }
 
-.Menu-top li {
-	width: 25%;
+.Menu-top ul li {
+	width: 100%;
 	position: absolute;
 }
 
-.Main-bottom li {
+.Main-bottom ul li {
 	width: 50%;
 	position: absolute;
 }
