@@ -10,11 +10,11 @@ sudo apt install python3-venv -y
  
 python3 -m venv venv
 
-source ~/.bashrc
-
-source /var/lib/jenkins/workspace/Flask_book/venv/bin/activate
+. /var/lib/jenkins/workspace/Flask_book/venv/bin/activate
  
 pip3 install -r requirements.txt
+
+source ~/.bashrc
 
 cd /var/lib/jenkins/workspace/Flask_book
 
