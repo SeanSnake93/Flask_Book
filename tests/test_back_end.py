@@ -171,11 +171,11 @@ class TestRegUserF(TestBase):
             self.client.post(
                 url_for('register'),
                 data=dict(
-                    admin = Users(
-                        first_name="NewSystem",
-                        last_name="Testing",
-                        email="NewSystem@Testing.com",
-                        password="N3wSy5temT35t1n8"
+                    first_name="NewSystem",
+                    last_name="Testing",
+                    email="NewSystem@Testing.com",
+                    password="N3wSy5temT35t1n8",
+                    confirm_password="N3wSy5temT35t1n8"
                     )
                 )
             )
