@@ -20,9 +20,9 @@ class TestBase(TestCase):
 
     def setUp(self):
         """Will be called before every test"""
-        db.session.commit()
         db.drop_all()
         db.create_all()
+        db.session.commit()
         hashed_pw = bcrypt.generate_password_hash('Adm1nSy5temT35t1n8')
         admin = Users(
             first_name="AdminSystem",
@@ -81,6 +81,15 @@ class TestViews(TestBase):
         self.assertEqual(response.status_code, 200)
 
 # -------- END-Visit-Testing --------
+
+# ____________________________________________________________________
+
+# ---------- Tables-Testing ----------
+
+#class TestData(TestBase):
+#    def test_film
+
+# -------- END-Tables-Testing --------
 
 # ____________________________________________________________________
 
