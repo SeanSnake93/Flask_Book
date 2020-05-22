@@ -43,12 +43,12 @@ def add_movie():
 def add_collection(film):
     userID = int(current_user.id)
     own = Collection.query.filter_by(user_id=current_user.id).filter_by(films_id=film).first()
-    if own == none:
+    if own == None:
         filmOwn = Collection(
             user_id = userID,
             films_id = film
         )
-    db.session.add(filmOwn)
+        db.session.add(filmOwn)
     db.session.commit()
     return redirect(url_for('collection'))
 
