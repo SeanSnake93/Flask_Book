@@ -165,7 +165,7 @@ class TestOwnX2F(TestBase):
         self.assertEqual(Collection.query.filter_by(user_id=2).count(), 2)
 
 class TestRegUserF(TestBase):
-    def test_add_film(self):
+    def test_accadd_user(self):
         """This is to add a User to the database"""
         with self.client:
             self.client.post(
@@ -180,6 +180,15 @@ class TestRegUserF(TestBase):
             )
             follow_redirects=True
         self.assertEqual(Users.query.count(), 3)
+
+    def test_valid_email():
+        assert python3.validate_email(RegistrationForm, sean@sean.com) == True
+        assert python3.validate_email(RegistrationForm, sean@sean) == False
+        assert python3.validate_email(RegistrationForm, seansean.com) == False
+        assert python3.validate_email(UpdateAccountForm, sean@sean.com) == True
+        assert python3.validate_email(UpdateAccountForm, sean@sean) == False
+        assert python3.validate_email(UpdateAccountForm, seansean.com) == False
+        assert python3.validate_email(UpdateAccountForm, AdminSystem@Testing.com) == False
 
 # -------- Create-Function-Limitations --------
 
@@ -297,7 +306,7 @@ class TestOwnedF(TestBase):
 
 class TestAccDelF(TestBase):
     """This as it stands will fail as the item is able to be duplicated in the current system"""
-    def test_accdel_film(self):
+    def test_accdel_user(self):
         with self.client:
             self.client.post(
                 url_for('login'),
