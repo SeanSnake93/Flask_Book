@@ -278,4 +278,30 @@ class TestOwnedF(TestBase):
         
         self.assertEqual(Collection.query.filter_by(user_id=1).count(), 1)
 
+class TestAccDelF(TestBase):
+    """This as it stands will fail as the item is able to be duplicated in the current system"""
+    def test_accdel_film(self):
+        with self.client:
+            self.client.post(
+                url_for('login'),
+                data=dict(
+                    email="System@Testing.com",
+                    password="Sy5temT35t1n8"
+                ),
+            follow_redirects=True
+            )
+            response = self.client.post(
+                url_for('add_collection', film=1),
+                follow_redirects=True
+            )
+            self.assertEqual(Collection.query.filter_by(user_id=2).count(), 1)
+
+            response = self.client.post(
+                url_for('account_delete'),
+                follow_redirects=True
+            )
+        
+        self.assertEqual(Collection.query.count(), None)
+        self.assertEqual(Users.query.count(), 1)
+
 # -------- END-Delete-Function-Testing --------
