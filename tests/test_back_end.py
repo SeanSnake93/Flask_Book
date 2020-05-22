@@ -19,7 +19,6 @@ class TestBase(TestCase):
         return app
 
     def setUp(self):
-        """Will be called before every test"""
         db.session.commit()
         db.drop_all()
         db.create_all()
@@ -64,7 +63,6 @@ class TestBase(TestCase):
         db.session.commit()
 
     def tearDown(self):
-        """Will be called after every test"""
         db.session.remove()
         db.drop_all()
 
@@ -76,7 +74,6 @@ class TestBase(TestCase):
 
 class TestViews(TestBase):
     def test_homepage_view(self):
-        """This is the server getting a status code 200"""
         response = self.client.get(url_for('home'))
         self.assertEqual(response.status_code, 200)
 
@@ -88,7 +85,6 @@ class TestViews(TestBase):
 
 class TestAddFilmF(TestBase):
     def test_add_film(self):
-        """This is to add a film to the database"""
         with self.client:
             self.client.post(
                 url_for('login'),
@@ -115,7 +111,6 @@ class TestAddFilmF(TestBase):
         self.assertEqual(Films.query.count(), 3)
 
 class TestOwnF(TestBase):
-    """Testing to see if first film can be added to the collection 'film_id=1' in this test"""
     def test_own_film(self):
         with self.client:
             self.client.post(
@@ -133,7 +128,6 @@ class TestOwnF(TestBase):
         self.assertIn(b'1', response.data)
 
 class TestOwnX2F(TestBase):
-    """Testing to see if both films can be added to the collection"""
     def test_own2_film(self):
         with self.client:
             self.client.post(
@@ -158,7 +152,6 @@ class TestOwnX2F(TestBase):
 # -------- Create-Function-Limitations --------
 
 class TestOwnDuplicatesF(TestBase):
-    """This as it stands will fail as the item is able to be duplicated in the current system"""
     def test_owndup_film(self):
         with self.client:
             self.client.post(
@@ -187,7 +180,6 @@ class TestOwnDuplicatesF(TestBase):
 
 class TestEditFilmF(TestBase):
     def test_edit_film(self):
-        """This is to Edit a film to the database 'Test Matrix 1011' in to 'Test Matrix 1111' with this test"""
         with self.client:
             self.client.post(
                 url_for('login'),
@@ -216,7 +208,6 @@ class TestEditFilmF(TestBase):
 
 class TestDelFilmF(TestBase):
     def test_del_film(self):
-        """This is to Remove a film to the database 'Test Matrix 1011' in this test"""
         with self.client:
             self.client.post(
                 url_for('login'),
@@ -233,7 +224,6 @@ class TestDelFilmF(TestBase):
         self.assertEqual(Films.query.count(), 1)
 
 class TestOwnedF(TestBase):
-    """This as it stands will fail as the item is able to be duplicated in the current system"""
     def test_owndel_film(self):
         with self.client:
             self.client.post(
