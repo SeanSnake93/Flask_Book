@@ -42,7 +42,7 @@ def add_movie():
 @app.route('/catalogue/<film>/add', methods=['GET','POST'])
 def add_collection(film):
     userID = int(current_user.id)
-    own = Collection.query.filter_by(user_id=current_user.id)
+    own = Collection.query.filter_by(user_id=current_user.id).all()
     filmOwn = Collection(
         user_id = userID,
         films_id = film
