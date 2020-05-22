@@ -176,7 +176,6 @@ class TestRegUserF(TestBase):
                     email="NewSystem@Testing.com",
                     password="N3wSy5temT35t1n8",
                     confirm_password="N3wSy5temT35t1n8"
-                    )
                 )
             )
             follow_redirects=True
