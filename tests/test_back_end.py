@@ -5,7 +5,7 @@ from application import app, db, bcrypt
 from application.models import Users, Films, Collection
 from os import getenv
 
-# ---------- Base-Run-Testing ----------
+# ---------- Base-SetUp-Testing ----------
 
 class TestBase(TestCase):
     def create_app(self):
@@ -75,13 +75,19 @@ class TestBase(TestCase):
         db.session.remove()
         db.drop_all()
 
+# -------- END-Base-SetUp-Testing --------
+
+# ____________________________________________________________________
+
+# ---------- Visit-Testing ----------
+
 class TestViews(TestBase):
     def test_homepage_view(self):
         """This is the server getting a status code 200"""
         response = self.client.get(url_for('home'))
         self.assertEqual(response.status_code, 200)
 
-# -------- END-Base-Run-Testing --------
+# -------- END-Visit-Testing --------
 
 # ____________________________________________________________________
 
@@ -146,7 +152,7 @@ class TestOwnX2F(TestBase):
             follow_redirects=True
             )
             response = self.clinet.post(
-                url_for('add_collection', film=1)
+                url_for('add_collection', film=1),
                 follow_redirects=True
             )
             response = self.cliet.post(
@@ -171,11 +177,11 @@ class TestOwnDuplicatesF(TestBase):
             follow_redirects=True
             )
             response = self.cliet.post(
-                url_for('add_collection', film=1)
+                url_for('add_collection', film=1),
                 follow_redirects=True
             )
             response = self.cliet.post(
-                url_for('add_collection', film=1)
+                url_for('add_collection', film=1),
                 follow_redirects=True
             )
         self.assertEqual(Collection.query.filter_by(user_id=1), 1)
@@ -202,7 +208,7 @@ class TestEditFilmF(TestBase):
                 url_for('edit_movie' filmID = 2),
                 data=dict(
                     title="Test Matrix 1111"
-                )
+                ),
                 follow_redirects=True
             )
         self.assertEqual(Films.query.filter_by(title="Test Matrix 1111"), 1)
@@ -246,11 +252,11 @@ class TestOwnedF(TestBase):
             follow_redirects=True
             )
             response = self.cliet.post(
-                url_for('add_collection', film=1)
+                url_for('add_collection', film=1),
                 follow_redirects=True
             )
             response = self.cliet.post(
-                url_for('add_collection', film=2)
+                url_for('add_collection', film=2),
                 follow_redirects=True
             )
 
@@ -258,7 +264,7 @@ class TestOwnedF(TestBase):
 
             check = Collection.query.count()
             response = self.cliet.post(
-                url_for('remove_collection', film=2)
+                url_for('remove_collection', film=2),
                 follow_redirects=True
             )
         
