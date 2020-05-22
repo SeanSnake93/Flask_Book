@@ -164,6 +164,25 @@ class TestOwnX2F(TestBase):
         self.assertIn(b'2', response.data)
         self.assertEqual(Collection.query.filter_by(user_id=2).count(), 2)
 
+class TestRegUserF(TestBase):
+    def test_add_film(self):
+        """This is to add a User to the database"""
+        with self.client:
+            self.client.post(
+                url_for('register'),
+                hashed_pw = bcrypt.generate_password_hash('N3wSy5temT35t1n8'),
+                data=dict(
+                    admin = Users(
+                        first_name="NewSystem",
+                        last_name="Testing",
+                        email="NewSystem@Testing.com",
+                        password=hashed_pw
+                    )
+                )
+            )
+            follow_redirects=True
+        self.assertEqual(Users.query.count(), 3)
+
 # -------- Create-Function-Limitations --------
 
 class TestOwnDuplicatesF(TestBase):
