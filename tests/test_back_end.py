@@ -20,7 +20,6 @@ class TestBase(TestCase):
 
     def setUp(self):
         """Will be called before every test"""
-        db.session.commit()
         db.drop_all()
         db.create_all()
         hashed_pw = bcrypt.generate_password_hash('Adm1nSy5temT35t1n8')
