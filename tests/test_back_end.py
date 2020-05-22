@@ -209,7 +209,14 @@ class TestEditFilmF(TestBase):
             response = self.client.post(
                 url_for('edit_movie', filmID = 2),
                 data=dict(
-                    title="Test Matrix 1111"
+                    title="Test Matrix 1111",
+                    year=2020,
+                    age="U",
+                    director="Test-TestingSystem",
+                    genre="Invasion 2.0",
+                    formating="Plug In",
+                    description="This is a second virus sent to test the functionality of this data",
+                    code=92753765
                 ),
                 follow_redirects=True
             )
