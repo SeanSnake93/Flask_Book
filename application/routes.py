@@ -47,14 +47,14 @@ def add_collection(film):
         user_id = userID,
         films_id = film
     )
-    for movie not in own:
-        exist = False
+    exist = False
+    for movie in own:
         if movie.films_id != film:
             continue
         elif movie.films_id == film:
             exist == True
     if exist == False:
-        db.session.add(filmData)
+        db.session.add(filmOwn)
     db.session.commit()
     return redirect(url_for('collection'))
 
