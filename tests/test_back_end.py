@@ -153,11 +153,11 @@ class TestOwnX2F(TestBase):
                 ),
             follow_redirects=True
             )
-            response = self.clinet.post(
+            response = self.client.post(
                 url_for('add_collection', film=1),
                 follow_redirects=True
             )
-            response = self.cliet.post(
+            response = self.client.post(
                 url_for('add_collection', film=2),
                 follow_redirects=True
             )
@@ -178,11 +178,11 @@ class TestOwnDuplicatesF(TestBase):
                 ),
             follow_redirects=True
             )
-            response = self.cliet.post(
+            response = self.client.post(
                 url_for('add_collection', film=1),
                 follow_redirects=True
             )
-            response = self.cliet.post(
+            response = self.client.post(
                 url_for('add_collection', film=1),
                 follow_redirects=True
             )
@@ -253,19 +253,18 @@ class TestOwnedF(TestBase):
                 ),
             follow_redirects=True
             )
-            response = self.cliet.post(
+            response = self.client.post(
                 url_for('add_collection', film=1),
                 follow_redirects=True
             )
-            response = self.cliet.post(
+            response = self.client.post(
                 url_for('add_collection', film=2),
                 follow_redirects=True
             )
 
             self.assertEqual(Collection.query.filter_by(user_id=1), 2)
 
-            check = Collection.query.count()
-            response = self.cliet.post(
+            response = self.client.post(
                 url_for('remove_collection', film=2),
                 follow_redirects=True
             )
