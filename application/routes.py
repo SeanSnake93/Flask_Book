@@ -43,17 +43,20 @@ def add_movie():
 def add_collection(film):
     userID = int(current_user.id)
     own = Collection.query.filter_by(user_id=current_user.id).all()
-    filmOwn = Collection(
-        user_id = userID,
-        films_id = film
-    )
+    print(own)
     exist = False
     for movie in own:
         if movie.films_id != film:
+            print(exist)
             continue
         elif movie.films_id == film:
             exist == True
+            print(exist)
     if exist == False:
+        filmOwn = Collection(
+            user_id = userID,
+            films_id = film
+        )
         db.session.add(filmOwn)
     db.session.commit()
     return redirect(url_for('collection'))
