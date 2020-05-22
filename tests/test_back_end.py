@@ -128,7 +128,7 @@ class TestOwnF(TestBase):
             follow_redirects=True
             )
             response = self.client.post(
-                url_for('add_collection', film=1)
+                url_for('add_collection', film=1),
                 follow_redirects=True
             )
         self.assertIn(b'1', response.data)
