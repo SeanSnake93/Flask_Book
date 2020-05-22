@@ -171,6 +171,7 @@ def login():
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+    user = current_user
     form = UpdateAccountForm()
     if form.validate_on_submit():
         current_user.first_name = form.first_name.data
@@ -179,9 +180,9 @@ def account():
         db.session.commit()
         return redirect(url_for('account'))
     elif request.method =='GET':
-        form.first_name =  current_user.first_name
-        form.last_name = current_user.last_name
-        form.email = current_user.email
+        form.first_name =  user.first_name
+        form.last_name = user.last_name
+        form.email = user.email
     return render_template('account.html', title='Account Page', form=form)
 
 @app.route('/account/delete', methods=['GET', 'POST'])
