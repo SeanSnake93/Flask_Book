@@ -168,15 +168,15 @@ def login():
                 return redirect(url_for('home'))
     return render_template('login.html', title='Login Page', form=form)
 
-@app.route('/account', methods=['GET', 'POST'])
+@app.route('/account/<userID>', methods=['GET', 'POST'])
 @login_required
-def account():
-    user = current_user
+def account(userID):
     form = UpdateAccountForm()
+    user = Users.query.filter_by(id=userID).first()
     if form.validate_on_submit():
-        current_user.first_name = form.first_name.data
-        current_user.last_name = form.last_name.data
-        current_user.email = form.email.data
+        user.first_name = form.first_name.data
+        user.last_name = form.last_name.data
+        user.email = form.email.data
         db.session.commit()
         return redirect(url_for('account'))
     elif request.method =='GET':
