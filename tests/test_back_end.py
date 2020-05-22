@@ -5,6 +5,8 @@ from application import app, db, bcrypt
 from application.models import Users, Films, Collection
 from os import getenv
 
+# ---------- Base-Run-Testing ----------
+
 class TestBase(TestCase):
     def create_app(self):
         # pass in configuration for test database
@@ -78,7 +80,13 @@ class TestViews(TestBase):
         """This is the server getting a status code 200"""
         response = self.client.get(url_for('home'))
         self.assertEqual(response.status_code, 200)
-    
+
+# -------- END-Base-Run-Testing --------
+
+# ____________________________________________________________________
+
+# ---------- Create-Function-Testing ----------
+
 class TestAddFilmF(TestBase):
     def test_add_film(self):
         """This is to add a film to the database"""
@@ -106,45 +114,6 @@ class TestAddFilmF(TestBase):
                 follow_redirects=True
             )
         self.assertEqual(Films.query.count(), 3)
-
-class TestDelFilmF(TestBase):
-    def test_del_film(self):
-        """This is to Remove a film to the database 'Test Matrix 1011' in this test"""
-        with self.client:
-            self.client.post(
-                url_for('login'),
-                data=dict(
-                    email="AdminSystem@Testing.com",
-                    password="Adm1nSy5temT35t1n8"
-                ),
-            follow_redirects=True
-            )
-            response = self.client.post(
-                url_for('catalogue/2/delete'),              
-                follow_redirects=True
-            )
-        self.assertEqual(Films.query.count(), 1)
-
-class TestEditFilmF(TestBase):
-    def test_edit_film(self):
-        """This is to Edit a film to the database 'Test Matrix 1011' in to 'Test Matrix 1111' with this test"""
-        with self.client:
-            self.client.post(
-                url_for('login'),
-                data=dict(
-                    email="AdminSystem@Testing.com",
-                    password="Adm1nSy5temT35t1n8"
-                ),
-            follow_redirects=True
-            )
-            response = self.client.post(
-                url_for('edit_movie' filmID = 2),
-                data=dict(
-                    title="Test Matrix 1111"
-                )
-                follow_redirects=True
-            )
-        self.assertEqual(Films.query.filter_by(title="Test Matrix 1111"), 1)
 
 class TestOwnF(TestBase):
     """Testing to see if first film can be added to the collection 'film_id=1' in this test"""
@@ -187,6 +156,8 @@ class TestOwnX2F(TestBase):
         self.assertIn(b'2', response.data)
         self.assertEqual(Collection.query.filter_by(user_id=2), 2)
 
+# -------- Create-Function-Limitations --------
+
 class TestOwnDuplicatesF(TestBase):
     """This as it stands will fail as the item is able to be duplicated in the current system"""
     def test_owndup_film(self):
@@ -208,6 +179,59 @@ class TestOwnDuplicatesF(TestBase):
                 follow_redirects=True
             )
         self.assertEqual(Collection.query.filter_by(user_id=1), 1)
+
+# -------- END-Create-Function-Testing --------
+
+# ____________________________________________________________________
+
+# ---------- Update-Function-Testing ----------
+
+class TestEditFilmF(TestBase):
+    def test_edit_film(self):
+        """This is to Edit a film to the database 'Test Matrix 1011' in to 'Test Matrix 1111' with this test"""
+        with self.client:
+            self.client.post(
+                url_for('login'),
+                data=dict(
+                    email="AdminSystem@Testing.com",
+                    password="Adm1nSy5temT35t1n8"
+                ),
+            follow_redirects=True
+            )
+            response = self.client.post(
+                url_for('edit_movie' filmID = 2),
+                data=dict(
+                    title="Test Matrix 1111"
+                )
+                follow_redirects=True
+            )
+        self.assertEqual(Films.query.filter_by(title="Test Matrix 1111"), 1)
+
+# -------- Update-Function-Limitations --------
+
+# -------- END-Update-Function-Testing --------
+
+# ____________________________________________________________________
+
+# ---------- Delete-Function-Testing ----------
+
+class TestDelFilmF(TestBase):
+    def test_del_film(self):
+        """This is to Remove a film to the database 'Test Matrix 1011' in this test"""
+        with self.client:
+            self.client.post(
+                url_for('login'),
+                data=dict(
+                    email="AdminSystem@Testing.com",
+                    password="Adm1nSy5temT35t1n8"
+                ),
+            follow_redirects=True
+            )
+            response = self.client.post(
+                url_for('catalogue/2/delete'),              
+                follow_redirects=True
+            )
+        self.assertEqual(Films.query.count(), 1)
 
 class TestOwnedF(TestBase):
     """This as it stands will fail as the item is able to be duplicated in the current system"""
@@ -240,3 +264,4 @@ class TestOwnedF(TestBase):
         
         self.assertEqual(Collection.query.filter_by(user_id=1), 1)
 
+# -------- END-Delete-Function-Testing --------
