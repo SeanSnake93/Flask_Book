@@ -47,7 +47,7 @@ def add_collection(film):
         user_id = userID,
         films_id = film
     )
-    if filmOwn not in own:
+    if filmOwn.films_id not in own.films_id:
         db.session.add(filmOwn)
     db.session.commit()
     return redirect(url_for('collection'))
