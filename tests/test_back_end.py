@@ -20,6 +20,7 @@ class TestBase(TestCase):
 
     def setUp(self):
         """Will be called before every test"""
+        db.session.commit()
         db.drop_all()
         db.create_all()
         hashed_pw = bcrypt.generate_password_hash('Adm1nSy5temT35t1n8')
@@ -46,7 +47,6 @@ class TestBase(TestCase):
             description="This is a virus sent to test the functionality of this data",
             code=56735729
         )
-
         film2 = Films(
             title="Test Matrix 1011",
             year=2020,
@@ -57,7 +57,6 @@ class TestBase(TestCase):
             description="This is a virus sent to test the functionality of this data",
             code=92753765
         )
-
         db.session.add(admin)
         db.session.add(employee)
         db.session.add(film1)
