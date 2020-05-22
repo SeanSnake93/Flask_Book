@@ -42,22 +42,13 @@ def add_movie():
 @app.route('/catalogue/<film>/add', methods=['GET','POST'])
 def add_collection(film):
     userID = int(current_user.id)
-    own = Collection.query.filter_by(user_id=current_user.id).all()
-    print(own)
-    exist = False
-    for movie in own:
-        if movie.films_id != film:
-            print(exist)
-            continue
-        elif movie.films_id == film:
-            exist == True
-            print(exist)
-    if exist == False:
+    own = Collection.query.filter_by(user_id=current_user.id).filter_by(films_id=film).first()
+    if own == none:
         filmOwn = Collection(
             user_id = userID,
             films_id = film
         )
-        db.session.add(filmOwn)
+    db.session.add(filmOwn)
     db.session.commit()
     return redirect(url_for('collection'))
 
