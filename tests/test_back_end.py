@@ -236,7 +236,7 @@ class TestDelFilmF(TestBase):
             follow_redirects=True
             )
             response = self.client.post(
-                url_for('catalogue/2/delete'),              
+                url_for('delete' filmID = 2),              
                 follow_redirects=True
             )
         self.assertEqual(Films.query.count(), 1)
