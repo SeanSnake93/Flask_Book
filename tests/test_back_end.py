@@ -9,7 +9,6 @@ from os import getenv
 
 class TestBase(TestCase):
     def create_app(self):
-        # pass in configuration for test database
         config_name = 'testing'
         app.config.update(
             SQLALCHEMY_URI=getenv('FLASK_BOOK_TEST_URI'),
@@ -21,11 +20,9 @@ class TestBase(TestCase):
 
     def setUp(self):
         """Will be called before every test"""
-            # ensure that there is no data in the test database when the test starts
         db.session.commit()
         db.drop_all()
         db.create_all()
-            # Create a test admin user
         hashed_pw = bcrypt.generate_password_hash('Adm1nSy5temT35t1n8')
         admin = Users(
             first_name="AdminSystem",
@@ -33,7 +30,6 @@ class TestBase(TestCase):
             email="AdminSystem@Testing.com",
             password=hashed_pw
             )
-            # Create a basic user
         hashed_pw_2 = bcrypt.generate_password_hash('Sy5temT35t1n8')
         employee = Users(
             first_name="System",
@@ -41,7 +37,6 @@ class TestBase(TestCase):
             email="System@Testing.com",
             password=hashed_pw_2
             )
-            # save user to database
         film1 = Films(
             title="Test Matrix 1001",
             year=2020,
