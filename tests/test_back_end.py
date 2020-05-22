@@ -182,13 +182,13 @@ class TestRegUserF(TestBase):
         self.assertEqual(Users.query.count(), 3)
 
     def test_valid_email():
-        assert python3.validate_email(RegistrationForm, sean@sean.com) == True
-        assert python3.validate_email(RegistrationForm, sean@sean) == False
-        assert python3.validate_email(RegistrationForm, seansean.com) == False
-        assert python3.validate_email(UpdateAccountForm, sean@sean.com) == True
-        assert python3.validate_email(UpdateAccountForm, sean@sean) == False
-        assert python3.validate_email(UpdateAccountForm, seansean.com) == False
-        assert python3.validate_email(UpdateAccountForm, AdminSystem@Testing.com) == False
+        assert python3.validate_email(RegistrationForm, "test@system.com") == True
+        assert python3.validate_email(RegistrationForm, "test@system") == False
+        assert python3.validate_email(RegistrationForm, "testsystem.com") == False
+        assert python3.validate_email(UpdateAccountForm, "test@system.com") == True
+        assert python3.validate_email(UpdateAccountForm, "test@system") == False
+        assert python3.validate_email(UpdateAccountForm, "testsystem.com") == False
+        assert python3.validate_email(UpdateAccountForm, "AdminSystem@Testing.com") == False
 
 # -------- Create-Function-Limitations --------
 
