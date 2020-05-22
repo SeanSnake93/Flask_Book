@@ -205,7 +205,7 @@ class TestEditFilmF(TestBase):
             follow_redirects=True
             )
             response = self.client.post(
-                url_for('edit_movie' filmID = 2),
+                url_for('edit_movie', filmID = 2),
                 data=dict(
                     title="Test Matrix 1111"
                 ),
