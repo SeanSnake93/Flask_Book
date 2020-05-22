@@ -156,7 +156,7 @@ class TestOwnX2F(TestBase):
                 follow_redirects=True
             )
             response = self.cliet.post(
-                url_for('add_collection', film=2)
+                url_for('add_collection', film=2),
                 follow_redirects=True
             )
         self.assertIn(b'2', response.data)
