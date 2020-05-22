@@ -254,18 +254,13 @@ class TestEditUserF(TestBase):
             response = self.client.post(
                 url_for('account'),
                 data=dict(
-                    title="Test Matrix 1111",
-                    year=2020,
-                    age="U",
-                    director="Test-TestingSystem",
-                    genre="Invasion 2.0",
-                    formating="Plug In",
-                    description="This is a second virus sent to test the functionality of this data",
-                    code=92753765
+                    first_name="New",
+                    last_name="Name",
+                    email="AdminSystem@Testing.com"
                 ),
                 follow_redirects=True
             )
-        self.assertEqual(Films.query.filter_by(title="Test Matrix 1111").count(), 1)
+        self.assertEqual(Users.query.filter_by(last_name="Name").count(), 1)
 
 # -------- Update-Function-Limitations --------
     def test_valid_email():
