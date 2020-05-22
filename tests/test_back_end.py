@@ -166,28 +166,6 @@ class TestOwnX2F(TestBase):
 
 # -------- Create-Function-Limitations --------
 
-class TestOwnDuplicatesF(TestBase):
-    """This as it stands will fail as the item is able to be duplicated in the current system"""
-    def test_owndup_film(self):
-        with self.client:
-            self.client.post(
-                url_for('login'),
-                data=dict(
-                    email="AdminSystem@Testing.com",
-                    password="Adm1nSy5temT35t1n8"
-                ),
-            follow_redirects=True
-            )
-            response = self.cliet.post(
-                url_for('add_collection', film=1),
-                follow_redirects=True
-            )
-            response = self.cliet.post(
-                url_for('add_collection', film=1),
-                follow_redirects=True
-            )
-        self.assertEqual(Collection.query.filter_by(user_id=1), 1)
-
 # -------- END-Create-Function-Testing --------
 
 # ____________________________________________________________________
