@@ -181,15 +181,6 @@ class TestRegUserF(TestBase):
             follow_redirects=True
         self.assertEqual(Users.query.count(), 3)
 
-    def test_valid_email():
-        assert python3.validate_email(RegistrationForm, "test@system.com") == True
-        assert python3.validate_email(RegistrationForm, "test@system") == False
-        assert python3.validate_email(RegistrationForm, "testsystem.com") == False
-        assert python3.validate_email(UpdateAccountForm, "test@system.com") == True
-        assert python3.validate_email(UpdateAccountForm, "test@system") == False
-        assert python3.validate_email(UpdateAccountForm, "testsystem.com") == False
-        assert python3.validate_email(UpdateAccountForm, "AdminSystem@Testing.com") == False
-
 # -------- Create-Function-Limitations --------
 
 class TestOwnDuplicatesF(TestBase):
@@ -248,8 +239,43 @@ class TestEditFilmF(TestBase):
             )
         self.assertEqual(Films.query.filter_by(title="Test Matrix 1111").count(), 1)
 
-# -------- Update-Function-Limitations --------
+class TestEditUserF(TestBase):
+    def test_edit_user(self):
+        """This is to Edit a film to the database 'Test Matrix 1011' in to 'Test Matrix 1111' with this test"""
+        with self.client:
+            self.client.post(
+                url_for('login'),
+                data=dict(
+                    email="AdminSystem@Testing.com",
+                    password="Adm1nSy5temT35t1n8"
+                ),
+            follow_redirects=True
+            )
+            response = self.client.post(
+                url_for('account'),
+                data=dict(
+                    title="Test Matrix 1111",
+                    year=2020,
+                    age="U",
+                    director="Test-TestingSystem",
+                    genre="Invasion 2.0",
+                    formating="Plug In",
+                    description="This is a second virus sent to test the functionality of this data",
+                    code=92753765
+                ),
+                follow_redirects=True
+            )
+        self.assertEqual(Films.query.filter_by(title="Test Matrix 1111").count(), 1)
 
+# -------- Update-Function-Limitations --------
+    def test_valid_email():
+        assert python3.validate_email(RegistrationForm, "test@system.com") == True
+        assert python3.validate_email(RegistrationForm, "test@system") == False
+        assert python3.validate_email(RegistrationForm, "testsystem.com") == False
+        assert python3.validate_email(UpdateAccountForm, "test@system.com") == True
+        assert python3.validate_email(UpdateAccountForm, "test@system") == False
+        assert python3.validate_email(UpdateAccountForm, "testsystem.com") == False
+        assert python3.validate_email(UpdateAccountForm, "AdminSystem@Testing.com") == False
 # -------- END-Update-Function-Testing --------
 
 # ____________________________________________________________________
