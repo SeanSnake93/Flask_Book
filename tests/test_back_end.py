@@ -301,7 +301,7 @@ class TestAccDelF(TestBase):
                 follow_redirects=True
             )
         
-        self.assertEqual(Collection.query.count(), None)
+        self.assertEqual(Collection.query.count(), 0)
         self.assertEqual(Users.query.count(), 1)
 
 # -------- END-Delete-Function-Testing --------
