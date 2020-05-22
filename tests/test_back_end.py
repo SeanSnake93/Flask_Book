@@ -162,7 +162,7 @@ class TestOwnX2F(TestBase):
                 follow_redirects=True
             )
         self.assertIn(b'2', response.data)
-        self.assertEqual(Collection.query.filter_by(user_id=2), 2)
+        self.assertEqual(Collection.query.filter_by(user_id=2).count(), 2)
 
 # -------- Create-Function-Limitations --------
 
@@ -186,7 +186,7 @@ class TestOwnDuplicatesF(TestBase):
                 url_for('add_collection', film=1),
                 follow_redirects=True
             )
-        self.assertEqual(Collection.query.filter_by(user_id=1), 1)
+        self.assertEqual(Collection.query.filter_by(user_id=1).count(), 1)
 
 # -------- END-Create-Function-Testing --------
 
@@ -213,7 +213,7 @@ class TestEditFilmF(TestBase):
                 ),
                 follow_redirects=True
             )
-        self.assertEqual(Films.query.filter_by(title="Test Matrix 1111"), 1)
+        self.assertEqual(Films.query.filter_by(title="Test Matrix 1111").count(), 1)
 
 # -------- Update-Function-Limitations --------
 
@@ -261,10 +261,14 @@ class TestOwnedF(TestBase):
                 url_for('add_collection', film=2),
                 follow_redirects=True
             )
+
+            self.assertEqual(Collection.query.filter_by(user_id=1).count(), 2)
+
             response = self.client.post(
                 url_for('remove_collection', film=2),
                 follow_redirects=True
             )
-        self.assertEqual(Collection.query.filter_by(user_id=1), 1)
+        
+        self.assertEqual(Collection.query.filter_by(user_id=1).count(), 1)
 
 # -------- END-Delete-Function-Testing --------
