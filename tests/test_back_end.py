@@ -170,13 +170,12 @@ class TestRegUserF(TestBase):
         with self.client:
             self.client.post(
                 url_for('register'),
-                hashed_pw = bcrypt.generate_password_hash('N3wSy5temT35t1n8'),
                 data=dict(
                     admin = Users(
                         first_name="NewSystem",
                         last_name="Testing",
                         email="NewSystem@Testing.com",
-                        password=hashed_pw
+                        password="N3wSy5temT35t1n8"
                     )
                 )
             )
