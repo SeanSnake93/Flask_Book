@@ -84,15 +84,6 @@ class TestViews(TestBase):
 
 # ____________________________________________________________________
 
-# ---------- Tables-Testing ----------
-
-#class TestData(TestBase):
-#    def test_film
-
-# -------- END-Tables-Testing --------
-
-# ____________________________________________________________________
-
 # ---------- Create-Function-Testing ----------
 
 class TestAddFilmF(TestBase):
