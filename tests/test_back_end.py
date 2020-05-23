@@ -223,7 +223,7 @@ class TestReadFilmF(TestBase):
                 ),
             follow_redirects=True
             )
-            response = self.client.post(
+            response = self.client.get(
                 url_for('edit_movie', filmID = 2)
             )
         self.assertIn(b'Test Matrix 1011', response.data)

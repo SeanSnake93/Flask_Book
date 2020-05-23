@@ -6,9 +6,8 @@ it will then allow you to add or remove films created to and from your collectio
 
 ### Planing
 
-1. User Stories
-
-2. ERD (Entity Relationship Diagram)
+1. **User Stories** - 
+2. **ERD** (Entity Relationship Diagram)
 3. Risk Assesment
 
 ### File structure
