@@ -75,7 +75,7 @@ def collection():
 @app.route('/edit_movie/<filmID>', methods=['GET', 'POST'])
 @login_required
 def edit_movie(filmID):
-    form = EditFilmsForm()
+    form = FilmsForm()
     film = Films.query.filter_by(id=filmID).first()
     if form.validate_on_submit():
         film.title = form.title.data
