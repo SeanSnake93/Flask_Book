@@ -108,6 +108,39 @@ collection --- **(Forien Key Relationship)**
 
 #### Forms
 
+***FilmsForm***
+title, year, genre, director, rating, description, format, bar code, *submit*
+
+This creates a form for a subscribed member of the site to see in the catalogue and collection web pages.
+The Routes file filters out the data as required (i.e. only shouing the films you own in your collection).
+
+*Example...*
+**Gladiator** 2000 Drama
+Ridley Scott *15*
+A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.
+123456789
+
+***EditFilmsForm***
+title, year, genre, director, rating, description, format, bar code, *submit*
+
+Just like the form above it grabs data from the Films table, this however is used to edit the films content. Pulling the data and allowing the user to go in and edit and save and changes.
+
+***CollectionForm***
+own, *submit*
+
+This Collection Form is used to generate a add or delete request to the database depending on the users choice to add or remove from their Collection.
+
+***RegistrationForm***
+email, password, confirm_password, first_name, last_name, *submit*
+
+
+***LoginForm***
+email, password, remember, *submit*
+
+
+
+***UpdateAccountForm***
+first_name, last_name, email, *submit*
 
 
 #### Routes
