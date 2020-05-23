@@ -254,7 +254,9 @@ class TestEditUserF(TestBase):
             response = self.client.post(
                 url_for('account'),
                 data=dict(
-                    first_name="BetaSystem"
+                    first_name="BetaSystem",
+                    last_name="Testing",
+                    email="System@Testing.com"
                 ),
                 follow_redirects=True
             )
