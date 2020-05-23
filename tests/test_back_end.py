@@ -209,6 +209,29 @@ class TestOwnDuplicatesF(TestBase):
 
 # ____________________________________________________________________
 
+# ---------- Read-Function-Testing ----------
+
+class TestReadFilmF(TestBase):
+    def test_edit_film(self):
+        """This is to Edit a film to the database 'Test Matrix 1011' in to 'Test Matrix 1111' with this test"""
+        with self.client:
+            self.client.post(
+                url_for('login'),
+                data=dict(
+                    email="AdminSystem@Testing.com",
+                    password="Adm1nSy5temT35t1n8"
+                ),
+            follow_redirects=True
+            )
+            response = self.client.post(
+                url_for('edit_movie', filmID = 2)
+            )
+        self.assertIn(b'Test Matrix 1011', form.title.data)
+
+# -------- END-Read-Function-Testing --------
+
+# ____________________________________________________________________
+
 # ---------- Update-Function-Testing ----------
 
 class TestEditFilmF(TestBase):
