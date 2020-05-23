@@ -240,37 +240,30 @@ class TestEditFilmF(TestBase):
         self.assertEqual(Films.query.filter_by(title="Test Matrix 1111").count(), 1)
 
 class TestEditUserF(TestBase):
-    def test_edit_user(self):
-        """This is to Edit a film to the database 'Test Matrix 1011' in to 'Test Matrix 1111' with this test"""
+    def test_edit_film(self):
+        """This is to Edit a User to the database 'System@Testing.com's first name from 'System' to 'BetaSystem' with this test"""
         with self.client:
             self.client.post(
                 url_for('login'),
                 data=dict(
-                    email="AdminSystem@Testing.com",
-                    password="Adm1nSy5temT35t1n8"
+                    email="System@Testing.com",
+                    password="Sy5temT35t1n8"
                 ),
             follow_redirects=True
             )
             response = self.client.post(
                 url_for('account'),
                 data=dict(
-                    first_name="New",
-                    last_name="Name",
-                    email="AdminSystem@Testing.com"
+                    first_name="BetaSystem",
+                    last_name="Testing",
+                    email="System@Testing.com",
                 ),
                 follow_redirects=True
             )
-        self.assertEqual(Users.query.filter_by(last_name="Name").count(), 1)
+        self.assertEqual(Users.query.filter_by(first_name="BetaSystem").count(), 1)
 
 # -------- Update-Function-Limitations --------
-    def test_valid_email():
-        assert python3.validate_email(RegistrationForm, "test@system.com") == True
-        assert python3.validate_email(RegistrationForm, "test@system") == False
-        assert python3.validate_email(RegistrationForm, "testsystem.com") == False
-        assert python3.validate_email(UpdateAccountForm, "test@system.com") == True
-        assert python3.validate_email(UpdateAccountForm, "test@system") == False
-        assert python3.validate_email(UpdateAccountForm, "testsystem.com") == False
-        assert python3.validate_email(UpdateAccountForm, "AdminSystem@Testing.com") == False
+
 # -------- END-Update-Function-Testing --------
 
 # ____________________________________________________________________

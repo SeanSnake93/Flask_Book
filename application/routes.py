@@ -168,7 +168,7 @@ def login():
                 return redirect(url_for('home'))
     return render_template('login.html', title='Login Page', form=form)
 
-@app.route('/account/<userID>', methods=['GET', 'POST'])
+@app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account(userID):
     form = UpdateAccountForm()
