@@ -172,17 +172,16 @@ def login():
 @login_required
 def account():
     form = UpdateAccountForm()
-    user = Users.query.filter_by(id=userID).first()
     if form.validate_on_submit():
-        user.first_name = form.first_name.data
-        user.last_name = form.last_name.data
-        user.email = form.email.data
+        current_user.first_name = form.first_name.data
+        current_user.last_name = form.last_name.data
+        current_user.email = form.email.data
         db.session.commit()
         return redirect(url_for('account'))
     elif request.method =='GET':
-        form.first_name =  user.first_name
-        form.last_name = user.last_name
-        form.email = user.email
+        form.first_name =  current_user.first_name
+        form.last_name = current_user.last_name
+        form.email = current_user.email
     return render_template('account.html', title='Account Page', form=form)
 
 @app.route('/account/delete', methods=['GET', 'POST'])
