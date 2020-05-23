@@ -226,7 +226,7 @@ class TestReadFilmF(TestBase):
             response = self.client.post(
                 url_for('edit_movie', filmID = 2)
             )
-        self.assertIn(b'Test Matrix 1011', form.title.data)
+        self.assertIn(b'Test Matrix 1011', title.data)
 
 # -------- END-Read-Function-Testing --------
 
