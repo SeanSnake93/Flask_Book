@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
 from application.models import Films, Users, Collection
-from application.forms import FilmsForm, CollectionForm, RegistrationForm, LoginForm, UpdateAccountForm, EditFilmsForm
+from application.forms import FilmsForm, CollectionForm, RegistrationForm, LoginForm, UpdateAccountForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 # --- Creating a C.R.U.D site ( Create . Read . Update . Delete ) ---
