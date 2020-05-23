@@ -240,7 +240,7 @@ class TestEditFilmF(TestBase):
         self.assertEqual(Films.query.filter_by(title="Test Matrix 1111").count(), 1)
 
 class TestEditUserF(TestBase):
-    def test_edit_film(self):
+    def test_edit_user(self):
         """This is to Edit a User to the database 'System@Testing.com's first name from 'System' to 'BetaSystem' with this test"""
         with self.client:
             self.client.post(
@@ -256,7 +256,7 @@ class TestEditUserF(TestBase):
                 data=dict(
                     first_name="BetaSystem",
                     last_name="Testing",
-                    email="System@Testing.com",
+                    email="System@Testing.com"
                 ),
                 follow_redirects=True
             )
