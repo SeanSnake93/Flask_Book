@@ -170,7 +170,7 @@ def login():
 
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
-def account(userID):
+def account():
     form = UpdateAccountForm()
     user = Users.query.filter_by(id=userID).first()
     if form.validate_on_submit():
