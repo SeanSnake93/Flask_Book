@@ -142,9 +142,9 @@ Using the [Google Cloud Network][gcp] I was able to create a [Virtual Machine][v
 Using the VM's SHH terminal I installed features that would later be used as functions within my site. This would include the requirment to open ports '5000' and '8080' for Flask and Jenkins respectivly.
 The installs include.
 
-###### Where '**venv**' is bold it is here where some instalations are kept.
+###### Where '**venv**' is bold it is here where some installations are kept.
 
-* sudo apt updage
+* sudo apt update
 * sudo apt-get
 * sudo apt install python3
 * sudo apt install python3-pip
@@ -156,7 +156,7 @@ The installs include.
 * **venv** pip install flask
     * Flask==1.1.2
     * Jinja2==2.11.2
-* **venv** sudo apt install tree
+* sudo apt install tree
 * **venv** pip3 install flask-sqlalchemy
     * SQLAlchemy==1.3.16
     * PyMySQL==0.9.3
@@ -167,14 +167,14 @@ The installs include.
 * **venv** pip3 install flask_bcrypt
     * Flask-Bcrypt==0.7.1
     * bcrypt==3.1.7
-* pip3 install flask-login
+* **venv** pip3 install flask-login
     * email-validator==1.1.0
     * Flask-Login==0.5.0
-* pip3 install pytest
+* **venv** pip3 install pytest
     * pytest==5.4.2
-* pip3 install pytest-cov
+* **venv** pip3 install pytest-cov
     * pytest-cov==2.8.1
-* pip3 install flask-testing
+* **venv** pip3 install flask-testing
     * Flask-Testing==0.8.0
     * Werkzeug==1.0.1
 * sudo apt-get install unzip
@@ -182,9 +182,9 @@ The installs include.
 * sudo apt-get install -y chromium-browser (Only if chrome is not installed)
     * wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
     * unzip chromedriver_linux64.zip
-* pip3 install selenium
+* **venv** pip3 install selenium
     * selenium==3.141.0
-* pip install gunicorn
+* **venv** pip install gunicorn
     * gunicorn==20.0.4
 
 
@@ -203,16 +203,16 @@ chromedriver
 Again using the [GCP][gcp] to create an [SQL DATABASE][sql], I would export the data though the SHH to test my project. From the ERD I created 3 tables:-
 
 Films Table <br />
-id ----------- Integer **(Primary Key)** <br />
-title -------- String max(100) <br />
-year --------- Integer <br />
-age ---------- String max(100) <br />
-director ----- String max(100) <br />
-genre -------- String max(20) <br />
-formating ---- String max(10) <br />
-description -- String max(1000) <br />
-code --------- Integer <br />
-owners ------- **(Forien Key Relationship)**
+id              Integer **(Primary Key)** <br />
+title           String max(100) <br />
+year            Integer <br />
+age             String max(100) <br />
+director        String max(100) <br />
+genre           String max(20) <br />
+formating       String max(10) <br />
+description     String max(1000) <br />
+code            Integer <br />
+owners          **(Forien Key Relationship)**
 
 Collection Table <br />
 id ----------- Integer **(Primary Key)** <br />
