@@ -148,7 +148,7 @@ def remove_collection(film):
     return redirect(url_for('collection'))
 
 @app.route('/coverage')
-def home():
+def coverage():
     return render_template('coverage.html', title='Tests Page')
 
 # --- DELETE---END ---
