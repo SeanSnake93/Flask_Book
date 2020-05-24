@@ -16,6 +16,8 @@ python3 -m venv venv
 
 source ~/.bashrc
 
+pip3 install -r requirements.txt
+
 pytest --cov ./application --cov-report html
 
 mv ./htmlcov/index.html ./application/templates/coverage.html
