@@ -6,25 +6,63 @@ it will then allow you to add or remove films created to and from your collectio
 
 ## Contents
 
-1. Planning
+1. File Structure
+2. Planning
 * User Stories
 * ERD
 * Risk Assesment
-2. Creation
+3. Creation
 * Models
 * Forms
 * Routes
-3. Expanding
+4. Expanding
 * Remore SHH
 * Jenkins
-4. Testing
+5. Testing
 * Pytest
 * Debuging
 * Pytest Coverage
-5. Reflection
+6. Reflection
 * Areas to improve
 * Areas to reflect positivly
-6. File Structure
+7. File Structure
+
+### File structure
+
+*Note: All file names are in Bold*
+
+Project(Flask_Book/)
+Flask_Book/application/
+Flask_Book/application/**__init__.py**
+Flask_Book/application/**forms.py**
+Flask_Book/application/**models.py**
+Flask_Book/application/**routes.py**
+Flask_Book/application/static
+Flask_Book/application/static/css
+Flask_Book/application/static/css/**main.css**
+Flask_Book/application/templates
+Flask_Book/application/templates/**layout.html**
+Flask_Book/application/templates/**home.html**
+Flask_Book/application/templates/**about.html**
+Flask_Book/application/templates/**register.html**
+Flask_Book/application/templates/**login.html**
+Flask_Book/application/templates/**account.html**
+Flask_Book/application/templates/**catalogue.html**
+Flask_Book/application/templates/**add_movie.html**
+Flask_Book/application/templates/**edit_movie.html**
+Flask_Book/application/templates/**collection.html**
+Flask_Book/etc/
+Flask_Book/etc/systemd
+Flask_Book/etc/systemd/system
+Flask_Book/etc/systemd/system/**flask.service**
+Flask_Book/script/
+Flask_Book/script/**installation.sh**
+Flask_Book/tests/
+Flask_Book/tests/**__init__.py**
+Flask_Book/tests/**test_back_end.py**
+Flask_Book/**requirments.txt**
+Flask_Book/**app.py**
+Flask_Book/**create.py**
 
 ### Planing
 
@@ -108,10 +146,15 @@ collection --- **(Forien Key Relationship)**
 
 #### Forms
 
+Some Forms are used for multiple purposes, FilmsForm is used for multiple reasons primaraly due to the repertition of its data fields. When the data required changes some fields could be hidden and have data entered automaticly or in the case of the user, new form many be required to specify the fields required.
+
+All Forms must be filled to required standard before allowing the user to submit Read/Write/Update/Delete(s') to the DATABASE.
+
 ***FilmsForm***
 title, year, genre, director, rating, description, format, bar code, *submit*
 
-This creates a form for a visiting member to see in cataloge and when subscribed in the catalogue can add to their collection allowing the film data to be filtered through the catalogue web page (Example bellow). This is also used to Add new films to the database and edit existing entries.
+This creates a form for a visiting member to see in cataloge and when subscribed in the catalogue can add to their collection allowing the film data to be filtered through the catalogue web page (Example bellow). On the catalogue page you can edit existing entries or delete them. In the menu your able to Add new films to the DATABASE.
+*Used for Read/Write/Update/Delete funtions to DATABASE*
 
 *Example...*
 **Gladiator** 2000 Drama
@@ -119,73 +162,137 @@ Ridley Scott *15*
 A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.
 123456789
 
-***CollectionForm***
-own, *submit*
-
-
-
-This Collection Form is used to generate a add or delete request to the database depending on the users choice to add or remove from their Collection.
-
 ***RegistrationForm***
 email, password, confirm_password, first_name, last_name, *submit*
 
-
+This Form is used to enrole a user onto the site. Only requesting a name and email and password. on here the password must match the confirmed befor it is encripted in pw_hash to be stored on the SQL DATABASE.
+*Used for Write funtions to DATABASE*
 
 ***LoginForm***
 email, password, remember, *submit*
 
-
+This Form is used to scan the Users Database, once found with check to see is the password matches. If on sumbitting all is correct the user will be logged in and sent to the 'home' page. In addition the site will remove and display additional content on pages once logged in.
+*Used for Read funtions to DATABASE*
 
 ***UpdateAccountForm***
 first_name, last_name, email, *submit*
 
+Using the 'account' link the user is able to edit thier data and/or delete their account. By doing so will also delete all films within their collection from the Collection table.
+*Used for Read/Update/Delete funtions to DATABASE*
 
 #### Routes
 
+***Create Routes***
+
+add_movie
+*Using the FilmsForm will add field data to the Films Table. If all needs are met the user will be redirected to the 'home' page.*
+
+add_collection
+*If the user requests to add the movie to collection, the movie will be filtered within the users current collection. If the result of the search turns up no entries, the film will be added to the users collection and sent to the 'collection' page.*
+
+***Read Routes***
+
+catalogue
+*When opening the 'catalogue' page all the films in the DATABASE will be displayed on the screen. On the page the buttons to edit/delete or add to collection are hidden untill the user signs in and creates and account.*
+
+collection
+*Filtering the films within the users collection, when entering the 'collection' page, only the films hosted within the users collection will be displayed.*
+
+***Update Routes***
+
+edit_movie
+*Using the FilmForm this pulls data from the Films DATABASE that is filtered by a filmID containing its id. Applying the data to the fields in the 'edit_movie' page and applying any changes the user wishes to make.*
+
+***Delete Routes***
+
+delete
+*When looking to delete a film from the Films tabel this will filter thought all Collection table\, looking for entries of this film in all user collections and deletes them before removing the film.*
+
+remove_collection
+*Allowing the user to remove films from their collection, this filters out the film in the Collection table that relates to the logged in user and deletes the DATABASE entry.*
+
+***User CRUD Routes***
+
+register
+*If the user is already logged in they are directed to the 'home' page. If not then the RegistrationForm is used to collect data to be entered into the Users table.*
+
+login
+*If the user is already logged in they are directed to the 'home' page. If not then they will be requested to provide their email and password. If not logged in and visit a page that reqires the user to be logged on, the user is directed to thsi page.*
+
+account
+*Using the UpdateAccountForm this pulls data from the Users table and applys this to the fields on screen. This data can then be changed and updated.*
+
+account_delete
+*This using the Users id will filter out all films in their collection and delete them one by one. Once all are removed it will log the user out and delete their account.*
+
+logout
+*Clicking the Logout button on the menu will Log the user out of the site.*
+
 ### Expanding
-#### Remore SHH
+
+
+
+#### Remote SHH
+
+Using GCP a keygen was created using "" 
+
+Visual Studio
+
 #### Jenkins
 
+sudo su
+
+sudo systemctl status jenkins
+
+sudo systemctl start jenkins
+
+sudo systemctl restart jenkins
+
+sudo systemctl start jenkins
+
 ### Testing
+
+
+
 #### Pytest
+
+pytest
+
 #### Debuging
+
+During my tests I wanted to ensure that duplicates could not be applied to a Users collection. Testing the site this was possible as it was simply checking to see if the entry created match any on the table. The issue with this is that due to it being provided a fresh id number it would never match another enry in the table. As a result I needed to filter the data differently.
+
+*Before changes where made...*
+----------- coverage: platform linux, python 3.6.9-final-0 -----------
+Name                      Stmts   Miss  Cover
+---------------------------------------------
+application/__init__.py      14      0   100%
+application/forms.py         54      7    87%
+application/models.py        33      3    91%
+application/routes.py       139     45    68%
+---------------------------------------------
+TOTAL                       240     55    77%
+
+Changing the process from checking for a matching entry to filtering the Collection tabel for entries matching the users id and then filtering it again by the films id. If the serch returns no results the film is added to the users collection and datas added to the Collection table.
+
 #### Pytest Coverage
 
+pytest --cov ./application
+
+----------- coverage: platform linux, python 3.6.9-final-0 -----------
+Name                      Stmts   Miss  Cover
+---------------------------------------------
+application/__init__.py      14      0   100%
+application/forms.py         41      4    90%
+application/models.py        33      3    91%
+application/routes.py       131     10    92%
+---------------------------------------------
+TOTAL                       219     17    92%
+
+pytest --cov --cov=/application --cov-report=term-missing
+
 ### Reflection
+
 #### Areas to improve
+
 #### Areas to reflect positivly
-
-### File structure
-
-Project(Flask_Book/)
-Flask_Book/application/
-Flask_Book/application/**__init__.py**
-Flask_Book/application/**forms.py**
-Flask_Book/application/**models.py**
-Flask_Book/application/**routes.py**
-Flask_Book/application/static
-Flask_Book/application/static/css
-Flask_Book/application/static/css/**main.css**
-Flask_Book/application/templates
-Flask_Book/application/templates/**layout.html**
-Flask_Book/application/templates/**home.html**
-Flask_Book/application/templates/**about.html**
-Flask_Book/application/templates/**register.html**
-Flask_Book/application/templates/**login.html**
-Flask_Book/application/templates/**account.html**
-Flask_Book/application/templates/**catalogue.html**
-Flask_Book/application/templates/**add_movie.html**
-Flask_Book/application/templates/**edit_movie.html**
-Flask_Book/application/templates/**collection.html**
-Flask_Book/etc/
-Flask_Book/etc/systemd
-Flask_Book/etc/systemd/system
-Flask_Book/etc/systemd/system/**flask.service**
-Flask_Book/script/
-Flask_Book/script/**installation.sh**
-Flask_Book/tests/
-Flask_Book/tests/**__init__.py**
-Flask_Book/tests/**test_back_end.py**
-Flask_Book/**requirments.txt**
-Flask_Book/**app.py**
-Flask_Book/**create.py**
