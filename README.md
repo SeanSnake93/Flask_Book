@@ -203,16 +203,16 @@ chromedriver
 Again using the [GCP][gcp] to create an [SQL DATABASE][sql], I would export the data though the SHH to test my project. From the ERD I created 3 tables:-
 
 Films Table <br />
-id              Integer **(Primary Key)** <br />
-title           String max(100) <br />
-year            Integer <br />
-age             String max(100) <br />
-director        String max(100) <br />
-genre           String max(20) <br />
-formating       String max(10) <br />
-description     String max(1000) <br />
-code            Integer <br />
-owners          **(Forien Key Relationship)**
+id ----------- Integer **(Primary Key)** <br />
+title -------- String max(100) <br />
+year --------- Integer <br />
+age ---------- String max(100) <br />
+director ----- String max(100) <br />
+genre -------- String max(20) <br />
+formating ---- String max(10) <br />
+description -- String max(1000) <br />
+code --------- Integer <br />
+owners ------- **(Forien Key Relationship)**
 
 Collection Table <br />
 id ----------- Integer **(Primary Key)** <br />
@@ -305,7 +305,7 @@ register <br />
 *If the user is already logged in they are directed to the 'home' page. If not then the RegistrationForm is used to collect data to be entered into the Users table.*
 
 login <br />
-*If the user is already logged in they are directed to the 'home' page. If not then they will be requested to provide their email and password. If not logged in and visit a page that reqires the user to be logged on, the user is directed to thsi page.*
+*If the user is already logged in they are directed to the 'home' page. If not then they will be requested to provide their email and password. If not logged in and visit a page that reqires the user to be logged on, the user is directed to this page.*
 
 account <br />
 *Using the UpdateAccountForm this pulls data from the Users table and applys this to the fields on screen. This data can then be changed and updated.*
@@ -348,7 +348,7 @@ sudo su
 
 ### Testing
 
-
+breif overview
 
 #### Pytest
 
@@ -386,6 +386,8 @@ application/routes.py       131     10    92% <br />
 TOTAL                       219     17    92%
 
 pytest --cov --cov=/application --cov-report=term-missing
+
+
 
 ### Reflection
 

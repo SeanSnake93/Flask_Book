@@ -147,6 +147,10 @@ def remove_collection(film):
     db.session.commit()
     return redirect(url_for('collection'))
 
+@app.route('/coverage')
+def home():
+    return render_template('coverage.html', title='Tests Page')
+
 # --- DELETE---END ---
 
 #-----------------------------------------------------------------------------------------------

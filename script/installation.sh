@@ -16,6 +16,10 @@ python3 -m venv venv
 
 source ~/.bashrc
 
-pip3 install -r requirements.txt
+pytest --cov ./application --cov-report html
 
+mv ./htmlcov/index.html ./application/templates/coverage.html
+
+rm -rf htmlcov
+ 
 gunicorn --bind=0.0.0.0:5000 app:app
