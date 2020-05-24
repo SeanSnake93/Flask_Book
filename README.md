@@ -32,9 +32,13 @@ it will then allow you to add or remove films created to and from your collectio
 *Note: All file names are in Bold*
 
 Project(Flask_Book/)
+
 Flask_Book/application/
+
 Flask_Book/application/**__init__.py**
+
 Flask_Book/application/**forms.py**
+
 Flask_Book/application/**models.py**
 Flask_Book/application/**routes.py**
 Flask_Book/application/static
