@@ -190,11 +190,11 @@ The installs include.
 
 To assure that files used for cache or enviroments not needed to be uploaded, the creation of a '.gitignore' was created and used to hold the data bellow...
 
-/pycache/<br />
-*.pyc<br />
-/flask-book-venv/<br />
-/venv/<br />
-/.vscode/<br />
+/pycache/ <br />
+*.pyc <br />
+/flask-book-venv/ <br />
+/venv/ <br />
+/.vscode/ <br />
 chromedriver
 
 #### Models
