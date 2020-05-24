@@ -1,3 +1,11 @@
+[git]: https://github.com
+[gitP]: https://github.com/SeanSnake93/Flask_Book.git
+[trello]: https://trello.com/b/8pRYkq58
+[project]: http://35.246.12.58:5000/
+[gcp]: console.cloud.google.com
+[vm]: https://console.cloud.google.com/compute/instances
+[sql]: https://console.cloud.google.com/sql/instances/
+
 # Flask Book Project ~ Week 5
 
 Welcome to my Git Hub, thsi is a small website that is used to create a user/account and add allow you to add or remove films created to and from your collection.
@@ -10,6 +18,7 @@ Welcome to my Git Hub, thsi is a small website that is used to create a user/acc
 * ERD
 * Risk Assesment
 3. Creation
+* Hosting
 * Models
 * Forms
 * Routes
@@ -64,7 +73,7 @@ Flask_Book/**create.py**
 
 ### Planing
 
-1. **User Stories** - [Trello](https://trello.com/b/8pRYkq58)
+1. **User Stories** - [Visit Trello][trello]
 2. **ERD** (Entity Relationship Diagram)
 3. **Risk Assesment**
 
@@ -109,9 +118,26 @@ I woild include a relationship between the *Films* and *Users* tables. The reaso
 
 ### Creation
 
-#### Models
+#### Hosting
 
-From the ERD I created 3 tables where made in total:-
+Using the [Google Cloud Network][gcp] I was able to create a [Virtual Machine][vm] that would host my project.<br />
+Using the VM's SHH terminal I installed features that would later be used as functions within my site. This would include the requirment to open ports '5000' and '8080' for Flask and Jenkins respectivly.
+The installs include.
+
+###### Where '*venv*' is bold it is here where some instalations are kept.
+
+* sudo apt updage
+* sudo apt-get
+*
+*
+*
+*
+*
+
+#### Models
+###### Flask_Book/application/**models.py**
+
+Again using the [GCP][gcp] to create an [SQL DATABASE][sql], I would export the data though the SHH to test my project. From the ERD I created 3 tables:-
 
 Films Table <br />
 id ----------- Integer **(Primary Key)** <br />
@@ -139,6 +165,7 @@ last_name ---- String max(30) <br />
 collection --- **(Forien Key Relationship)**
 
 #### Forms
+###### Flask_Book/application/**forms.py**
 
 Some Forms are used for multiple purposes, FilmsForm is used for multiple reasons primaraly due to the repertition of its data fields. When the data required changes some fields could be hidden and have data entered automaticly or in the case of the user, new form many be required to specify the fields required. <br />
 All Forms must be filled to required standard before allowing the user to submit Read/Write/Update/Delete(s') to the DATABASE.
@@ -174,6 +201,7 @@ Using the 'account' link the user is able to edit thier data and/or delete their
 *Used for Read/Update/Delete funtions to DATABASE*
 
 #### Routes <br />
+###### Flask_Book/application/**routes.py**
 
 ***Create Routes***
 
@@ -223,25 +251,33 @@ logout <br />
 
 ### Expanding
 
-
+To remove the need of using the SHH terminals 'cd', 'touch' and 'vim' commands I cloned over to my [git repo][gitP] and used Visual Studio code.
 
 #### Remote SHH
 
-Using GCP a keygen was created using "" 
+later i used a keygen to open an SHH link between my PC and the VM terminal. This allowed me to run commands on my VM without the need to open it in my browser. In addition this would enable me like with the git hub clone to bounce between files with quicker speeds and relsove problems faster using a more responsive interface. Note this was created without using a passphrase.
 
-Visual Studio
+ssh-keygen -t rsa -b 4096 -C "your@git-email.com"<br />
+Creating 2 files, one being the Public Keygen (Key.pub) the other a private Keygen (Key).
+Opening the Public Keygen or using "cat ~/keygen.p"
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
 
 #### Jenkins
 
+As mentioned back in Hosting, I opened a port (8080) to enable the use of Jenkins.<br />
+First why Jenkins, well Jenkins is a CI (Continues Intergration) and CP (Continues )
+
 sudo su
 
-sudo systemctl status jenkins
+(root user) sudo systemctl status jenkins
 
-sudo systemctl start jenkins
+(root user) sudo systemctl start jenkins
 
-sudo systemctl restart jenkins
+(root user) sudo systemctl restart jenkins
 
-sudo systemctl start jenkins
+(root user) sudo systemctl start jenkins
 
 ### Testing
 
