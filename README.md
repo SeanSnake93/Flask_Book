@@ -74,11 +74,14 @@ Flask_Book/**create.py**
 
 When Starting with my original ERD I was looking at making a forum using comments under it. With a like or dislike, have the comments filtered by the highest rated. This being the most liked comment being at the top. This project idea was changed is it resembled to close to the design we made collectivly.
 
-***Users*** Table - [**id**, title, frist_name, last_name, email, password]
+***Users*** Table <br />
+**id**, title, frist_name, last_name, email, password
 
-***Forum_Post*** Table - [**id**, title, content, posted_date, post_auther *(Users)*, likes, dislikes]
+***Forum_Post*** Table <br />
+**id**, title, content, posted_date, post_auther *(Users)*, likes, dislikes
 
-***Comments*** Table - [**id**, auther *(Users)*, posted, content, forum_id *(Forum_Post)*, likes, dislikes]
+***Comments*** Table <br />
+**id**, auther *(Users)*, posted, content, forum_id *(Forum_Post)*, likes, dislikes
 
 With the Flask_Blog created I reviewed my original plan and chose to change it up completely. This is where the idea changed into a marketing site, creating a table of films and allowing the user to add this to their collection.
 
@@ -86,11 +89,14 @@ With the time constraint i did not want to have to create tables that would hold
 
 Using the MoSCoW method in my Trello I narrowed it down to a project that would consist of 3 tables.
 
-***Users*** Table *(None Marked)* - [**id**, first_name, last_name, email, password]
+***Users*** Table *(None Marked)* <br />
+**id**, first_name, last_name, email, password
 
-***Films*** Table - [**id**, title, year, genre, director, age_rating, description, bar_code]
+***Films*** Table <br />
+**id**, title, year, genre, director, age_rating, description, bar_code
 
-***Collection*** Table - [**id**, user_id *(Users)*, films_id *(Films)*]
+***Collection*** Table <br />
+**id**, user_id *(Users)*, films_id *(Films)*
 
 Unlike the original this has 2 tables (Users and Films) completely seperate form one another and are related though a single (Collection) table.
 
@@ -144,10 +150,10 @@ This creates a form for a visiting member to see in cataloge and when subscribed
 *Used for Read/Write/Update/Delete funtions to DATABASE*
 
 *Example...* <br />
-**Gladiator** 2000 Drama <br />
-Ridley Scott *15*# <br />
+**Gladiator** (2000) Drama <br />
+Ridley Scott *15* <br />
 A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery. <br />
-123456789
+*123456789*
 
 ***RegistrationForm*** <br />
 email, password, confirm_password, first_name, last_name, *submit*
