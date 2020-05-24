@@ -1,0 +1,6 @@
+/pycache/
+*.pyc
+/flask-book-venv/
+/venv/
+/.vscode/
+chromedriver

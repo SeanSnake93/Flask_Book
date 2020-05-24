@@ -65,11 +65,18 @@ Flask_Book/etc/systemd/system/**flask.service** <br />
 Flask_Book/script/ <br />
 Flask_Book/script/**installation.sh** <br />
 Flask_Book/tests/ <br />
-Flask_Book/tests/**__init__.py** <br />
+Flask_Book/tests/**__init __.py** <br />
 Flask_Book/tests/**test_back_end.py** <br />
 Flask_Book/**requirments.txt** <br />
 Flask_Book/**app.py** <br />
 Flask_Book/**create.py**
+
+###### *Other files not uploaded to git include*
+Flask_Book/**.gitignore.py**
+Flask_Book/flask-book-venv
+Flask_Book/.pytest_cache
+Flask_Book/application/__pycache __
+
 
 ### Planing
 
@@ -78,6 +85,15 @@ Flask_Book/**create.py**
 3. **Risk Assesment**
 
 #### User Stories
+
+Ising Trello i created a list of taskes needed with the use of MoSCoW.<br />
+Planning = Story_00-09<br />
+Must Have = Story_10-19<br />
+Should Have = Story_20-29<br />
+Could Have = Story_30-39<br />
+
+The Stries are given a description and Effort Points. This is used towards a project performance reflection.
+![Flask Project Trello Board](https://www.site.com/50.jpg)
 
 #### ERD
 
@@ -116,6 +132,8 @@ I woild include a relationship between the *Films* and *Users* tables. The reaso
 
 #### Risk Assesment
 
+Add contents here (Maybe try to make a table)
+
 ### Creation
 
 #### Hosting
@@ -124,15 +142,58 @@ Using the [Google Cloud Network][gcp] I was able to create a [Virtual Machine][v
 Using the VM's SHH terminal I installed features that would later be used as functions within my site. This would include the requirment to open ports '5000' and '8080' for Flask and Jenkins respectivly.
 The installs include.
 
-###### Where '*venv*' is bold it is here where some instalations are kept.
+###### Where '**venv**' is bold it is here where some instalations are kept.
 
 * sudo apt updage
 * sudo apt-get
-*
-*
-*
-*
-*
+* sudo apt install python3
+* sudo apt install python3-pip
+* sudo apt install python3-venv
+* python3 -m venv flask-book-venv
+* pip3 freeze
+* . flask-book-venv/bin/activate
+* **venv** pip3 freeze
+* **venv** pip install flask
+    * Flask==1.1.2
+    * Jinja2==2.11.2
+* **venv** sudo apt install tree
+* **venv** pip3 install flask-sqlalchemy
+    * SQLAlchemy==1.3.16
+    * PyMySQL==0.9.3
+    * Flask-SQLAlchemy==2.4.1
+* **venv** pip3 install flask-wtf
+    * WTForms==2.3.1
+    * Flask-WTF==0.14.3
+* **venv** pip3 install flask_bcrypt
+    * Flask-Bcrypt==0.7.1
+    * bcrypt==3.1.7
+* pip3 install flask-login
+    * email-validator==1.1.0
+    * Flask-Login==0.5.0
+* pip3 install pytest
+    * pytest==5.4.2
+* pip3 install pytest-cov
+    * pytest-cov==2.8.1
+* pip3 install flask-testing
+    * Flask-Testing==0.8.0
+    * Werkzeug==1.0.1
+
+* sudo apt-get install unzip
+* sudo apt-get install -y chromium-browser (Only if chrome is not installed)
+    * wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+    * unzip chromedriver_linux64.zip
+
+* pip3 install selenium
+    * selenium==3.141.0
+
+    * gunicorn==20.0.4
+
+
+To assure that files used for cache or enviroments not needed to be uploaded, the creation of a '.gitignore' was created and used to hold the data bellow...
+
+/pycache/<br />
+*.pyc<br />
+/flask-book-venv/
 
 #### Models
 ###### Flask_Book/application/**models.py**
@@ -163,6 +224,10 @@ password ----- String max(500) <br />
 first_name --- String max(30) <br />
 last_name ---- String max(30) <br />
 collection --- **(Forien Key Relationship)**
+
+This was linked to the SHH using the following function...
+* **venv** export SQLALCHEMY_DATABASE_URI="mysql+pymysql://**user**:**password**@**SQL.IP**/flask_book"
+* **venv** export MY_SECRET_KEY="**Secret Key Code**"
 
 #### Forms
 ###### Flask_Book/application/**forms.py**
