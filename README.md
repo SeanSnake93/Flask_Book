@@ -177,15 +177,14 @@ The installs include.
 * pip3 install flask-testing
     * Flask-Testing==0.8.0
     * Werkzeug==1.0.1
-
 * sudo apt-get install unzip
+    * zipp==3.1.0
 * sudo apt-get install -y chromium-browser (Only if chrome is not installed)
     * wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
     * unzip chromedriver_linux64.zip
-
 * pip3 install selenium
     * selenium==3.141.0
-
+* pip install gunicorn
     * gunicorn==20.0.4
 
 
@@ -193,7 +192,10 @@ To assure that files used for cache or enviroments not needed to be uploaded, th
 
 /pycache/<br />
 *.pyc<br />
-/flask-book-venv/
+/flask-book-venv/<br />
+/venv/<br />
+/.vscode/<br />
+chromedriver
 
 #### Models
 ###### Flask_Book/application/**models.py**
