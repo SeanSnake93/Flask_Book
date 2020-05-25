@@ -252,6 +252,7 @@ class TestEditFilmF(TestBase):
                 follow_redirects=True
             )
         self.assertEqual(Films.query.filter_by(title="Test Matrix 1111").count(), 1)
+        self.assertEqual(Films.query.count(), 2)
 
 class TestEditUserF(TestBase):
     def test_edit_user(self):
@@ -275,6 +276,7 @@ class TestEditUserF(TestBase):
                 follow_redirects=True
             )
         self.assertEqual(Users.query.filter_by(first_name="BetaSystem").count(), 1)
+        self.assertEqual(Users.query.count(), 2)
 
 # -------- Update-Function-Limitations --------
 

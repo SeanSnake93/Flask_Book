@@ -5,6 +5,7 @@
 [gcp]: console.cloud.google.com
 [vm]: https://console.cloud.google.com/compute/instances
 [sql]: https://console.cloud.google.com/sql/instances/
+[hooks]: https://github.com/SeanSnake93/Flask_Book/settings/hooks
 
 # Flask Book Project ~ Week 5
 
@@ -66,16 +67,21 @@ Flask_Book/script/ <br />
 Flask_Book/script/**installation.sh** <br />
 Flask_Book/tests/ <br />
 Flask_Book/tests/**__init __.py** <br />
+Flask_Book/tests/**test_int.py** <br />
 Flask_Book/tests/**test_back_end.py** <br />
+Flask_Book/test_results/ <br />
+Flask_Book/test_results/**test=at-month-day-on-year-hour:month.html**  <br />
 Flask_Book/**requirments.txt** <br />
 Flask_Book/**app.py** <br />
 Flask_Book/**create.py**
+Flask_Book/**chromedriver**
 
 ###### *Other files not uploaded to git include*
 Flask_Book/**.gitignore.py**
 Flask_Book/flask-book-venv
 Flask_Book/.pytest_cache
 Flask_Book/application/__pycache __
+./bashrc
 
 
 ### Planing
@@ -132,7 +138,7 @@ I woild include a relationship between the *Films* and *Users* tables. The reaso
 
 #### Risk Assesment
 
-Add contents here (Maybe try to make a table)
+#######################################################################################################################################################################################################################################################################################################################################
 
 ### Creation
 
@@ -140,7 +146,7 @@ Add contents here (Maybe try to make a table)
 
 Using the [Google Cloud Network][gcp] I was able to create a [Virtual Machine][vm] that would host my project.<br />
 Using the VM's SHH terminal I installed features that would later be used as functions within my site. This would include the requirment to open ports '5000' and '8080' for Flask and Jenkins respectivly.
-The installs include.
+The installed applications include.
 
 ###### Where '**venv**' is bold it is here where some installations are kept.
 
@@ -188,14 +194,13 @@ The installs include.
     * gunicorn==20.0.4
 
 
-To assure that files used for cache or enviroments not needed to be uploaded, the creation of a '.gitignore' was created and used to hold the data bellow...
+To assure that files created for cache or flask enviroments where not uploaded, the creation of a '.gitignore' was made to hold the following data bellow...
 
 /pycache/ <br />
 *.pyc <br />
 /flask-book-venv/ <br />
 /venv/ <br />
-/.vscode/ <br />
-chromedriver
+/.vscode/
 
 #### Models
 ###### Flask_Book/application/**models.py**
@@ -322,21 +327,67 @@ To remove the need of using the SHH terminals 'cd', 'touch' and 'vim' commands I
 
 #### Remote SHH
 
-later i used a keygen to open an SHH link between my PC and the VM terminal. This allowed me to run commands on my VM without the need to open it in my browser. In addition this would enable me like with the git hub clone to bounce between files with quicker speeds and relsove problems faster using a more responsive interface. Note this was created without using a passphrase.
+Later I used a keygen to open an SHH link between my PC and the VM terminal. This allowed me to run commands on my VM without the need to open it in my browser. In addition this would enable me the ability to bounce between files with quicker speeds and relsove problems faster using a more responsive interface.
 
-ssh-keygen -t rsa -b 4096 -C "your@git-email.com"<br />
-Creating 2 files, one being the Public Keygen (Key.pub) the other a private Keygen (Key).
-Opening the Public Keygen or using "cat ~/keygen.p"
+ssh-keygen -t rsa -b 4096 -C "your@git-email.com"
 
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+Creating 2 files, one being the Public Keygen (Key.pub) the other a private Keygen (Key).<br />
+###### Note this was created without using a passphrase.
 
+Opening the Public Keygen (via a txt document or using "cat ~/keygen.pub") to display its contents and copying the code into the [GCP VM][vm]'s set of 'SHH Keys'. Once added the private keygen should be moved to the '.shh' folder within your user.
+
+Visual Studio is then able to remotely access the machine without the need to enter GCP.<br />
+*Note: the machine must be turned on in order to remote access.*
 
 #### Jenkins
+##### Add Jenkins
 
-As mentioned back in Hosting, I opened a port (8080) to enable the use of Jenkins.<br />
-First why Jenkins, well Jenkins is a CI (Continues Intergration) and CP (Continues )
+adding my exports to the /.bashrc file
+
+file location for notes later
+/'flask_blog
+/flask_book
+/.bashrc
+
+As mentioned back in Hosting, I have attached to my [Virtual Machine][vm] a tag to 'open port 8080'.
+This port will enable access to Jenkins and allow for the project to include *Continues Intergration*.<br />
+
+With this enabled i am able to attach my repository and have Jenkins pull and build any changes I make to the '*Master*' branch. 
+
+Now with Jenkins now open to the VM, I needed to create and allow the 'Jenkins User' access to sudo commands.
+
+sudo useradd -m -s /bin/bash jenkins
+
+Running this code creates the Jenkins User, this can be made visable by using the 'ls -la /home/' command.
+
+Now to provide the Jenkins user access to sudo commands we need to enter the sudoers file. this is done by using, 'sudo visudo'. Once opened under sudo users, Jenkins has been added.
+
+jenkins ALL=(ALL:ALL) NOPASSWD:ALL
+
+Entering the url "http://localhostIP:8080/" will enable you access to the Jenkins page.<br />
+After entering my InternalAdminPassword and accepting any plugins jenkins will be ready to use.
+
+##### Creating a Jenkins Project
+
+On Jenkins, Clicking on 'New Item' will allow for a new project to be made. For this project, a Freestyle Project was created.
+
+In the configuration i included my git hub as a project link and source code repository. In the command section i originaly had my export to the SQL however due to the security requirments of this data, it has been added to a 'bashrc' which is called upon from the installation.sh file.<br /> 
+
+As a result by the end of my project this field contained...
+
+* chmod +x script/*.sh 
+* sudo cp etc/systemd/system/flask.service /etc/systemd/system
+* sudo systemctl daemon-reload
+* sudo systemctl enable flask.service
+* sudo systemctl restart flask.service
+
+##### Activate or Deactivate Jenkins
+
+Returning to the SHH I wanted to activate Jenkins to start the build process. By using the following command... 
 
 sudo su
+
+This will take you to the root user. It is here where you can edit the current status of your Jenkins machine. The functions used to do this is as follows...
 
 (root user) sudo systemctl status jenkins
 
@@ -344,37 +395,81 @@ sudo su
 
 (root user) sudo systemctl restart jenkins
 
-(root user) sudo systemctl start jenkins
+(root user) sudo systemctl stop jenkins
+
+##### Web Hooks
+
+In the configuration on Jenkins, ticking the 'GitHub hook trigger for GITScm polling' box will enable the use of the CI. What this will do is *post*/ping the Git Repo for any new chnages being made. If any have been chnaged it will then *get* the changes and restart the build process.
+
+To finish this, on the [Git repo][gitP] in the settings tab, naviagte to [Webhooks][hooks] and create a new webhook. In here you will need to insert "http://localhostIP:8080/github-webhook/" and set it to 'Jest Push Event', activate and add. This will upon any changes to the branch upload chnages to Jenkins and in turn, Jenkins will build and host the site.
 
 ### Testing
 
-breif overview
+Within testing I want to cheack to be sure the results I expect is what I get. It is during this that i took the time to refine some of the features within my site. The two methods i used in this project was Pytest and Integration Testing.
 
 #### Pytest
 
-pytest
+As the expectation of the project was to design a site that would have CRUD functions. I during my tests split the functions up in this way. testing that each aspect of this was covered.
+
+**TestBase** - This was used to set up each test. Aquiring the exports to both test server and secret key, Adding 2 users and 2 films to the server.
+
+**TestViews** - This will test to see if the page has been loaded correctly by looking for a '200' code to be seen on the terminal readout (not seen by visiting user).
+
+---------- Create Functions
+
+**TestAddFilmF** - This will log the user into one of the accounts created in TestBase and attempt to add a film using the fields on the add_movie.html.
+
+**TestOwnF** - This will test to see if when logged into a user and pressing add to collection on the catalogue.html if you do indeed have the film added to you collection.
+
+**TestOwnX2F** - Same as above but adds two different films and checks to see if both exist.
+
+**TestRegUserF** - Tests to see if a user can be created when on register.html
+
+**TestOwnDuplicatesF** - This test was originaly made knowing it would fail. This was due to the add to collection not filtering out pre existing copies of the film. Later resolved during Debugging.
+
+---------- Read Functions
+
+**TestReadFilmF** - This will check to see if the film called to be edited is infact the correct film. This si done by testing the name in the title field.
+
+---------- Update Functions
+
+**TestEditFilmF** - This will check that the film edited is being saved correctly. Done by calling for film 2 and changing the title. once submited, check the database for any titles that matche the new data and check that we did not just create a new entry.
+
+**TestEditUserF** - This will check that a User is edited and saved correctly. Done by logging in and changing the users first name. once submited, check the database for any names baring a match to the new data and check that we did not just create a new entry.
+
+---------- Delete Functions
+**TestDelFilmF** - Checks to see when on catalogue.html, clicking the delete film button will infact remove the entry from the Films DATABASE.
+
+**TestOwnedF** - This checks to see if when the user request to remove a film from their collection it is deleted form the datbase. Done by adding it to the users libary, checking its their and then removing it.
+
+**TestAccDelF** - This one is used to assure that when a user wishes to cancel their account, the Collection table has no data stored relating to this user. As a result it filters out all films in the users collection and removes them before deleting the account. This checks to see if the user has a film in their collection and upon deleting the account is the user was deleted and if in the Collection table there are any entries by the old user.
 
 #### Debuging
 
-During my tests I wanted to ensure that duplicates could not be applied to a Users collection. Testing the site this was possible as it was simply checking to see if the entry created match any on the table. The issue with this is that due to it being provided a fresh id number it would never match another enry in the table. As a result I needed to filter the data differently.
+During my tests I wanted to ensure that duplicates could not be applied to a Users collection. As it was simply checking to see if the entry created, match any on the table. It would be added however, as with the original method a fresh 'id' number was made and could never match another entry in the table.
 
-*Before changes where made...* <br />
+*As a result before applying the changes my score in coverage was...* <br />
 ----------- coverage: platform linux, python 3.6.9-final-0 ----------- <br />
-Name                      Stmts   Miss  Cover <br />
+Name----------------------Stmts---Miss--Cover <br />
 --------------------------------------------- <br />
-application/__init__.py      14      0   100% <br />
-application/forms.py         54      7    87% <br />
-application/models.py        33      3    91% <br />
-application/routes.py       139     45    68% <br />
+application/__init__.py------14------0---100% <br />
+application/forms.py---------54------7----87% <br />
+application/models.py--------33------3----91% <br />
+application/routes.py-------139-----45----68% <br />
 --------------------------------------------- <br />
-TOTAL                       240     55    77%
+TOTAL-----------------------240-----55----77%
 
-Changing the process from checking for a matching entry to filtering the Collection tabel for entries matching the users id and then filtering it again by the films id. If the serch returns no results the film is added to the users collection and datas added to the Collection table.
+As a result I needed to filter the data differently, using the Users id and Films id a filter. if an entry existed it would skip the append and submit stages of the function and if not then the entry would be created.
 
 #### Pytest Coverage
 
+As can be seen in the coverage chart above, under miss their is a total of 55. This is a total of 55 lines missed by the pytest. in order to achive a higher coverage more of the lines needed to be targeted. So that we are able to see what other lines are being missed by running the function bellow we will be presented with a list of number corisponding to lines within the file not targeted by the pytest. 
+
 pytest --cov ./application
 
+By using this i was able to include large portions of my routes file within the tests to bring my total score.
+
+*After forfilling more lines of code...*
 ----------- coverage: platform linux, python 3.6.9-final-0 ----------- <br />
 Name                      Stmts   Miss  Cover <br />
 --------------------------------------------- <br />
@@ -385,12 +480,50 @@ application/routes.py       131     10    92% <br />
 --------------------------------------------- <br />
 TOTAL                       219     17    92%
 
+In order to reach 92% i created a total of 12 tests.
+
+In an attempt to make this more accessabel i used a function that would produce the details in a html format.
+
+This one is used to show only the __init __.py, routes.py, models.py and forms.<br />
+pytest --cov ./application --cov-report html
+
+This one will show a list of lines missed within all files of the the application.
 pytest --cov --cov=/application --cov-report=term-missing
 
+#### Integration Testing
 
+Using the unzip install i downloaded the chromedriver from the cloud and unzipped the file and removed the now nolonger useful file. Making sure to install the Chromium Browser before so as chrome is not currently installed on my pc. With is installed I proceeded to create the test_int.py.
+
+It is here where I directed the site to call for the test server and run its tests. This will run along with the tests in the standard test_back_end.py pytests.
+
+Using this testing format i was abel to get it to check other aspects of the register.html page but as this is running over lines already being tested this has not increaded my overall score.
+
+Uploading the chromedriver and test_int.py has provided 3 mew tests that will be run every time the site is reloaded.
+
+Changing the installation file to run a pytest and save the it as a report has enabled me to apply the latest test results to the site.
+
+* pytest --cov ./application --cov-report html
+* mv ./htmlcov/index.html ./application/templates/coverage.html
+* rm -rf htmlcov
+
+Entering the about.html page and clicking on the coverage button will allow you to review the latest score given.
+
+#### Gunicorn
+
+#######################################################################################################################################################################################################################################################################################################################################
+
+* **venv** pip install gunicorn
+    * gunicorn==20.0.4
 
 ### Reflection
 
 #### Areas to improve
 
+branch use
+slim down tests - test smaller chuncks of my data
+reduce data entry issues
+
 #### Areas to reflect positivly
+
+Created a working site
+overall coverage is at 92%
