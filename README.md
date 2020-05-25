@@ -383,7 +383,8 @@ As a result by the end of my project this field contained...
 
 ##### Activate or Deactivate Jenkins
 
-Returning to the SHH I wanted to activate Jenkins to start the build process. By using the following command... 
+Returning to the SHH I needed to activate Jenkins to start the build process. <br />
+By using the following command... 
 
 sudo su
 
@@ -408,6 +409,7 @@ To finish this, on the [Git repo][gitP] in the settings tab, naviagte to [Webhoo
 Within testing I want to cheack to be sure the results I expect is what I get. It is during this that i took the time to refine some of the features within my site. The two methods i used in this project was Pytest and Integration Testing.
 
 #### Pytest
+###### Flask_Book/tests/**test_back_end.py** <br />
 
 As the expectation of the project was to design a site that would have CRUD functions. I during my tests split the functions up in this way. testing that each aspect of this was covered.
 
@@ -463,11 +465,15 @@ As a result I needed to filter the data differently, using the Users id and Film
 
 #### Pytest Coverage
 
-As can be seen in the coverage chart above, under miss their is a total of 55. This is a total of 55 lines missed by the pytest. in order to achive a higher coverage more of the lines needed to be targeted. So that we are able to see what other lines are being missed by running the function bellow we will be presented with a list of number corisponding to lines within the file not targeted by the pytest. 
+To aquire a coverage chart liek the one above you need to use "pytest --cov "pytest --cov ./application"
 
-pytest --cov ./application
+This will run your tests and give you a coverage chart like the one above, under 'miss' their is a number 55. This is a total number of lines missed by the pytest. in order to achive a higher coverage, more of the lines missed need to be targeted. So that we are able to see what other lines are being missed, we will need to run the function bellow...
 
-By using this i was able to include large portions of my routes file within the tests to bring my total score.
+pytest --cov --cov=/application --cov-report=term-missing
+
+This will provide a list of number corisponding to lines within all file not targeted by the pytest. 
+
+By using this I was able to increase my routes files coverage to bring up my total score.
 
 *After forfilling more lines of code...*
 ----------- coverage: platform linux, python 3.6.9-final-0 ----------- <br />
@@ -484,46 +490,53 @@ In order to reach 92% i created a total of 12 tests.
 
 In an attempt to make this more accessabel i used a function that would produce the details in a html format.
 
-This one is used to show only the __init __.py, routes.py, models.py and forms.<br />
+By using the following command i was able to get a copy of all files in a html document.<br />
+*pytest --cov --cov=/application --cov-report=term-missing*<br />
+The issue is that I dont need any other files other than my 4 main *.py files.
+
+As a result I used the following code to create my file.<br />
 pytest --cov ./application --cov-report html
 
-This one will show a list of lines missed within all files of the the application.
-pytest --cov --cov=/application --cov-report=term-missing
+When running this code a new folder is created and to assure this is not uploaded to the repo, i included it in my .gitignore
 
-#### Integration Testing
-
-Using the unzip install i downloaded the chromedriver from the cloud and unzipped the file and removed the now nolonger useful file. Making sure to install the Chromium Browser before so as chrome is not currently installed on my pc. With is installed I proceeded to create the test_int.py.
-
-It is here where I directed the site to call for the test server and run its tests. This will run along with the tests in the standard test_back_end.py pytests.
-
-Using this testing format i was abel to get it to check other aspects of the register.html page but as this is running over lines already being tested this has not increaded my overall score.
-
-Uploading the chromedriver and test_int.py has provided 3 mew tests that will be run every time the site is reloaded.
-
-Changing the installation file to run a pytest and save the it as a report has enabled me to apply the latest test results to the site.
-
+So i am able to let others see this report if they so wish. I in the installation.sh file created a couple of lines that would run the pytest for me and generagte a new form for me to check on the site.<br />
 * pytest --cov ./application --cov-report html
 * mv ./htmlcov/index.html ./application/templates/coverage.html
 * rm -rf htmlcov
 
-Entering the about.html page and clicking on the coverage button will allow you to review the latest score given.
+This link can be seen in my abouts page.
+
+#### Integration Testing
+###### Flask_Book/tests/**test_int.py** <br />
+
+In order to do this testing a chromedrive is required, this can be found by installing the unzip install and downloading the chromedriver from the cloud. If chrome is not installed on the pc, you need to run the following install.
+
+sudo apt-get install -y chromium-browser (Only if chrome is not installed)
+
+to download and unzip the file...
+
+wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+
+Once unzipped the chromedriver will be available and the zip file will no longer be needed. This must be uploaded for the following tests to function.
+
+Tests within test_int.py
+
+**TestBase** - This will run config tests.
+
+**test_server_is_up_and_running** - This will test to see if the output of the server is '200'.
+
+**test_registration** - This will test to see if the visiting user is able to use the register page to create an account.
+
+It is here where I started to run my tests. This will run along with the tests in the standard test_back_end.py pytests.
+
+Using this testing format I was able to get it to check other aspects of the register.html page but as this is running over lines already being tested via the standard pytest, this has not increaded my overall score.
+
+Uploading the chromedriver and test_int.py has provided 3 new tests that will be run every time the site is reloaded.
 
 #### Gunicorn
 
-#######################################################################################################################################################################################################################################################################################################################################
+Installed but not intergratted to its full potentual.
 
 * **venv** pip install gunicorn
     * gunicorn==20.0.4
-
-### Reflection
-
-#### Areas to improve
-
-branch use
-slim down tests - test smaller chuncks of my data
-reduce data entry issues
-
-#### Areas to reflect positivly
-
-Created a working site
-overall coverage is at 92%
