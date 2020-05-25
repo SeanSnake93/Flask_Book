@@ -73,14 +73,14 @@ Flask_Book/test_results/ <br />
 Flask_Book/test_results/**test=at-month-day-on-year-hour:month.html**  <br />
 Flask_Book/**requirments.txt** <br />
 Flask_Book/**app.py** <br />
-Flask_Book/**create.py**
+Flask_Book/**create.py** <br />
 Flask_Book/**chromedriver**
 
 ###### *Other files not uploaded to git include*
-Flask_Book/**.gitignore.py**
-Flask_Book/flask-book-venv
-Flask_Book/.pytest_cache
-Flask_Book/application/__pycache __
+Flask_Book/**.gitignore.py** <br />
+Flask_Book/flask-book-venv <br />
+Flask_Book/.pytest_cache <br />
+Flask_Book/application/__pycache __ <br />
 ./bashrc
 
 
@@ -375,11 +375,11 @@ In the configuration i included my git hub as a project link and source code rep
 
 As a result by the end of my project this field contained...
 
-* chmod +x script/*.sh 
-* sudo cp etc/systemd/system/flask.service /etc/systemd/system
-* sudo systemctl daemon-reload
-* sudo systemctl enable flask.service
-* sudo systemctl restart flask.service
+chmod +x script/*.sh  <br />
+sudo cp etc/systemd/system/flask.service /etc/systemd/system <br />
+sudo systemctl daemon-reload <br />
+sudo systemctl enable flask.service <br />
+sudo systemctl restart flask.service
 
 ##### Activate or Deactivate Jenkins
 
@@ -440,6 +440,7 @@ As the expectation of the project was to design a site that would have CRUD func
 **TestEditUserF** - This will check that a User is edited and saved correctly. Done by logging in and changing the users first name. once submited, check the database for any names baring a match to the new data and check that we did not just create a new entry.
 
 ---------- Delete Functions
+
 **TestDelFilmF** - Checks to see when on catalogue.html, clicking the delete film button will infact remove the entry from the Films DATABASE.
 
 **TestOwnedF** - This checks to see if when the user request to remove a film from their collection it is deleted form the datbase. Done by adding it to the users libary, checking its their and then removing it.
@@ -477,14 +478,15 @@ By using this I was able to increase my routes files coverage to bring up my tot
 
 *After forfilling more lines of code...*
 ----------- coverage: platform linux, python 3.6.9-final-0 ----------- <br />
-Name                      Stmts   Miss  Cover <br />
+----------- coverage: platform linux, python 3.6.9-final-0 ----------- <br />
+Name----------------------Stmts---Miss--Cover <br />
 --------------------------------------------- <br />
-application/__init__.py      14      0   100% <br />
-application/forms.py         41      4    90% <br />
-application/models.py        33      3    91% <br />
-application/routes.py       131     10    92% <br />
+application/__init__.py------14------0---100% <br />
+application/forms.py---------41------4----90% <br />
+application/models.py--------33------3----91% <br />
+application/routes.py-------131-----10----92% <br />
 --------------------------------------------- <br />
-TOTAL                       219     17    92%
+TOTAL-----------------------219-----17----92%
 
 In order to reach 92% i created a total of 12 tests.
 
