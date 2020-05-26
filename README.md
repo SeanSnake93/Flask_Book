@@ -33,6 +33,7 @@ Welcome to my Git Hub, this is a website that is used to create a user/account a
 * Pytest
 * Debuging
 * Pytest Coverage
+* Integration Testing
 
 ### File structure
 
@@ -70,7 +71,7 @@ Flask_Book/tests/**test_int.py** <br />
 Flask_Book/tests/**test_back_end.py** <br />
 Flask_Book/test_results/ <br />
 Flask_Book/test_results/**test=at-month-day-on-year-hour:month.html**  <br />
-Flask_Book/**risk_assesment.xlsx**
+Flask_Book/**Risk_Assesment.xlsx**
 Flask_Book/**requirments.txt** <br />
 Flask_Book/**app.py** <br />
 Flask_Book/**create.py** <br />
@@ -139,7 +140,7 @@ I woild include a relationship between the *Films* and *Users* tables. The reaso
 #### Risk Assesment
 
 Please visit the following file...<br />
-Flask_Book/**risk_assesment.xlsx**
+Flask_Book/**Risk_Assesment.xlsx**
 
 ### Creation
 
