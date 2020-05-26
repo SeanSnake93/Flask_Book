@@ -27,7 +27,7 @@ Welcome to my Git Hub, this is a website that is used to create a user/account a
 * Forms
 * Routes
 4. Expanding
-* Remore SHH
+* Remote SHH
 * Jenkins
 5. Testing
 * Pytest
@@ -219,12 +219,12 @@ genre -------- String max(20) <br />
 formating ---- String max(10) <br />
 description -- String max(1000) <br />
 code --------- Integer <br />
-owners ------- **(Forien Key Relationship)**
+owners ------- **(Foreign Key Relationship)**
 
 Collection Table <br />
 id ----------- Integer **(Primary Key)** <br />
-user_id ------ **(Forien Key)** <br />
-films_id ----- **(Forien Key)** <br />
+user_id ------ **(Foreign Key)** <br />
+films_id ----- **(Foreign Key)** <br />
 
 Users Table <br />
 id ----------- Integer **(Primary Key)** <br />
@@ -232,7 +232,7 @@ email -------- String max(500) <br />
 password ----- String max(500) <br />
 first_name --- String max(30) <br />
 last_name ---- String max(30) <br />
-collection --- **(Forien Key Relationship)**
+collection --- **(Foreign Key Relationship)**
 
 This was linked to the SHH using the following function...
 * **venv** export SQLALCHEMY_DATABASE_URI="mysql+pymysql://**user**:**password**@**SQL.IP**/flask_book"
@@ -386,19 +386,15 @@ sudo systemctl restart flask.service
 ##### Activate or Deactivate Jenkins
 
 Returning to the SHH I needed to activate Jenkins to start the build process. <br />
-By using the following command... 
+By using the following command we can stop and start Jenkins as we see fit... 
 
-sudo su
+*sudo systemctl status jenkins*
 
-This will take you to the root user. It is here where you can edit the current status of your Jenkins machine. The functions used to do this is as follows...
+*sudo systemctl start jenkins*
 
-(root user) sudo systemctl status jenkins
+*sudo systemctl restart jenkins*
 
-(root user) sudo systemctl start jenkins
-
-(root user) sudo systemctl restart jenkins
-
-(root user) sudo systemctl stop jenkins
+*sudo systemctl stop jenkins*
 
 ##### Web Hooks
 
