@@ -6,10 +6,13 @@
 [vm]: https://console.cloud.google.com/compute/instances
 [sql]: https://console.cloud.google.com/sql/instances/
 [hooks]: https://github.com/SeanSnake93/Flask_Book/settings/hooks
+[site]: http://35.246.12.58:5000/
 
 # Flask Book Project ~ Week 5
 
-Welcome to my Git Hub, thsi is a small website that is used to create a user/account and add allow you to add or remove films created to and from your collection.
+Welcome to my Git Hub, this is a website that is used to create a user/account and allow you to add or remove films created, to and from your collection.
+
+[Link to website][site]
 
 ## Contents
 
@@ -30,10 +33,6 @@ Welcome to my Git Hub, thsi is a small website that is used to create a user/acc
 * Pytest
 * Debuging
 * Pytest Coverage
-6. Reflection
-* Areas to improve
-* Areas to reflect positivly
-7. File Structure
 
 ### File structure
 
@@ -71,6 +70,7 @@ Flask_Book/tests/**test_int.py** <br />
 Flask_Book/tests/**test_back_end.py** <br />
 Flask_Book/test_results/ <br />
 Flask_Book/test_results/**test=at-month-day-on-year-hour:month.html**  <br />
+Flask_Book/**risk_assesment.xlsx**
 Flask_Book/**requirments.txt** <br />
 Flask_Book/**app.py** <br />
 Flask_Book/**create.py** <br />
@@ -138,7 +138,8 @@ I woild include a relationship between the *Films* and *Users* tables. The reaso
 
 #### Risk Assesment
 
-#######################################################################################################################################################################################################################################################################################################################################
+Please visit the following file...<br />
+Flask_Book/**risk_assesment.xlsx**
 
 ### Creation
 
