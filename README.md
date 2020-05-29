@@ -16,28 +16,28 @@ Welcome to my Git Hub, this is a website that is used to create a user/account a
 
 ## Contents
 
-1. File Structure
-2. Planning
-* User Stories
-* ERD
-* Risk Assesment
-3. Creation
-* Hosting
-* Models
-* Forms
-* Routes
-4. Expanding
-* Remote SHH
-* Jenkins
-5. Testing
-* Pytest
-* Debuging
-* Pytest Coverage
-* Integration Testing
+- [File Structure](#File-Structure)
+- [Planning](#Planning)
+    * [User Stories](#User-Stories)
+    * [ERD]{#ERD}
+    * [Risk Assesment](#Risk-Assesment)
+- [Creation](#Creation)
+    * [Hosting](#Hosting)
+    * [Models](#Models)
+    * [Forms](#Forms)
+    * [Routes](#Routes)
+- [Expanding](#Expanding)
+    * [Remote SHH](#Remote-SHH)
+    * [Jenkins](#Jenkins)
+- [Testing](#Testing)
+    * [Pytest](#Pytest)
+    * [Debuging](#Debuging)
+    * [Pytest Coverage](#Pytest-Coverage)
+    * [Integration Testing](#Integration-Testing)
 
 ### File structure
 
-*Note: All file names are in Bold*
+> *Note: All file names are in Bold*
 
 Project(Flask_Book/) <br />
 Flask_Book/application/ <br />
@@ -77,13 +77,14 @@ Flask_Book/**app.py** <br />
 Flask_Book/**create.py** <br />
 Flask_Book/**chromedriver**
 
-###### *Other files not uploaded to git include*
-Flask_Book/**.gitignore.py** <br />
-Flask_Book/flask-book-venv <br />
-Flask_Book/.pytest_cache <br />
-Flask_Book/application/__pycache __ <br />
-./bashrc
-
+> ###### *Other files not uploaded to git include*
+> Flask_Book/**.gitignore.py** <br />
+> Flask_Book/flask-book-venv <br />
+> Flask_Book/.pytest_cache <br />
+> Flask_Book/application/__pycache __ <br />
+> ./bashrc
+> /.vscode/
+> chromedriver
 
 ### Planing
 
@@ -100,7 +101,7 @@ Should Have = Story_20-29<br />
 Could Have = Story_30-39<br />
 
 The Stries are given a description and Effort Points. This is used towards a project performance reflection.
-![Flask Project Trello Board](https://www.site.com/50.jpg)
+![Flask Project Trello Board](https://trello.com/b/8pRYkq58)
 
 #### ERD
 
